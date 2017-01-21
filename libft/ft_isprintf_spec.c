@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprintf_spec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 19:39:36 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/21 20:59:27 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/21 18:20:04 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/21 18:20:48 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/libft.h"
 
-int		main(void)
+int		ft_isprintf_spec(int c)
 {
-	int i =	ft_printf("%0-+* 10.4s\n%42.1i");
+	if (ft_isdigit(c))
+		return (1);
+	else if (c == '%' || c == '+' || c == ' ' || c == '-')
+		return (1);
+	else if (c == 'j' || c == 'l' || c == 'h' || c == 'z')
+		return (1);
 	return (0);
 }

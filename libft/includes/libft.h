@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 16:48:30 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/18 19:47:05 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/21 18:22:38 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void				ft_intzero(int ar[], int f, size_t n);
 char				*ft_realloc(char *arr_in, size_t len);
 char  				*ft_strnfjoin(char *s1, char *s2, size_t n);
 size_t				ft_atosize_t(char *s);
+int					ft_isprintf_spec(int c);
 #endif

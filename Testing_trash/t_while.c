@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   t_while.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 19:39:36 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/21 20:59:27 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/21 19:45:14 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/21 19:50:16 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
+#include <string.h>
 
 int		main(void)
 {
-	int i =	ft_printf("%0-+* 10.4s\n%42.1i");
+	char	*s;
+
+	s = strdup("Suqa");
+	while (*s)
+		++s;
+	printf("last: %c\n", *(--s));
 	return (0);
 }

@@ -6,25 +6,34 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 14:11:32 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/19 21:06:26 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/21 21:01:55 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_flags(char *sv, t_printf **pf)
+static void		ft_flags(char *sv, t_printf **pf)
 {
+	char 	f;
+
+	f = 1;
 	while (*(++sv))                                                     //cuz '%' first
 	{
+		(*sv >= '1' && *sv <= '9' && f) ? f = 0 : 0;
 		(*sv == '#') ? (*pf)->conv_flag[0] = '#': 0;
 		(*sv == '-') ? (*pf)->conv_flag[1] = '-': 0;
 		(*sv == '+') ? (*pf)->conv_flag[2] = '+': 0;
 		(*sv == ' ') ? (*pf)->conv_flag[3] = ' ': 0;
-		(*sv == '0') ? (*pf)->conv_flag[4] = '0': 0;
+		if (*sv == '0' && f)
+		{
+			(*pf)->conv_flag[4] = '0';
+			f = 1;
+		}
+		(!ft_isdigit(*sv)) ? f = 1 : 0;
 	}
 }
 
-void	ft_size_spec(char *sv, t_printf **pf)
+static void		ft_size_spec(char *sv, t_printf **pf)
 {
 	enum size_spec 	spec;
 
@@ -41,7 +50,7 @@ void	ft_size_spec(char *sv, t_printf **pf)
 	(*pf)->size_spec = spec;                                            // Save specifier to struct
 }
 
-void	ft_minfld_precs(chav *sv, t_printf **pf)                        // Minimal field and prescision
+static void		ft_minfld_presc(char *sv, t_printf **pf)                        // Minimal field and prescision
 {
 	char 	f;
 
@@ -58,14 +67,30 @@ void	ft_minfld_precs(chav *sv, t_printf **pf)                        // Minimal 
 		}
 		else if (*sv == '.')                                            // It's for prescision
 			f = 2;
-		else if (!(*sv >= '1' && *s <= '9'))                            // It's for getting the latest values
+		else if (!(*sv >= '1' && *sv <= '9'))                            // It's for getting the latest values
 			f = 1;
 	}
 }
 
-void	ft_po_polochkam_sqa(t_printf **pf)
+static void		ft_conversion_letter(char *sv, t_printf **pf)
 {
+	while (*sv)
+		++sv;
+	(*pf)->cl = *(--sv);
+}
+
+void        ft_s_spec(t_printf **pf, char *sv/*, va_list *pc*/)
+{
+	ft_s_printf_clr(pf);                                                    // Clear struct, before using it
+	while (*(++sv))
+	{
+		++(*pf)->lspc;
+		if (ft_isalpha(*sv) && !ft_isprintf_spec(*sv))                      // If conversion letter - end cycle
+			break;
+	}
+	(*pf)->spec = ft_strnfjoin((*pf)->spec, sv - (*pf)->lspc, (*pf)->lspc + 1); //Write specifier into struct
+	ft_conversion_letter((*pf)->spec, pf);	
 	ft_flags((*pf)->spec, pf);
 	ft_size_spec((*pf)->spec, pf);
-	ft_minfld_presc((*pf)->spec, pf);                                   // Ended here !
+	ft_minfld_presc((*pf)->spec, pf);                                
 }
