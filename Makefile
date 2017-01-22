@@ -12,7 +12,7 @@
 
 NAME = ft_printf
 
-SRC = main.c format.c ft_c_spec.c ft_s_printf.c
+SRC = main.c format.c ft_making_move.c ft_s_printf.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -32,7 +32,7 @@ $(NAME): $(OBJ)
 	@echo "./ft_printf compiled"
 
 %.o: %.c
-	gcc $(INC) $(CFLAGS) -o $@ $<
+	@gcc $(INC) $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f $(OBJ)

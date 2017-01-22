@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprintf_spec.c                                 :+:      :+:    :+:   */
+/*   ft_making_move.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 18:20:04 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/21 18:20:48 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/15 14:11:32 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/21 21:01:55 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_printf.h"
 
-int		ft_isprintf_spec(int c)
-{
-	if (ft_isdigit(c))
-		return (1);
-	else if (c == '+' || c == ' ' || c == '-' || c == '.')
-		return (1);
-	else if (c == 'j' || c == 'l' || c == 'h' || c == 'z' || c == '*')
-		return (1);
-	return (0);
-}
+

@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	int i =	ft_printf("%0-+* 10.4s\n%42.1i");
+	int i =	ft_printf("rama%0-+*ll 10.4h%lama%42.1lli");
 	return (0);
 }
