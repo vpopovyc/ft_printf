@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tell_me_flag_baby.c                             :+:      :+:    :+:   */
+/*   ft_isprintf_up_spec.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 19:00:23 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 18:58:27 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/23 17:15:46 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/23 17:19:39 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/libft.h"
 
-void		ft_get_flag(va_list *pc, char *sv)
+int		ft_isprintf_up_spec(int c)
 {
-	if (*sv == 'c')
-		ft_putchar((char)va_arg(*pc, int));
-	else if (*sv == 'd' || *sv == 'i')
-		ft_putnbr(va_arg(*pc, int));
-	else if (*sv == 's')
-		ft_putstr(va_arg(*pc, char *)); 
-}	
+	if (c == 'C' || c == 'D' || c == 'U' || c == 'O' || c == 'S')
+		return (1);
+	return (0);
+}

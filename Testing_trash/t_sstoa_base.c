@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tell_me_flag_baby.c                             :+:      :+:    :+:   */
+/*   t_sstoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 19:00:23 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 18:58:27 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/23 18:58:50 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/23 19:19:28 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_get_flag(va_list *pc, char *sv)
+int		main(void)
 {
-	if (*sv == 'c')
-		ft_putchar((char)va_arg(*pc, int));
-	else if (*sv == 'd' || *sv == 'i')
-		ft_putnbr(va_arg(*pc, int));
-	else if (*sv == 's')
-		ft_putstr(va_arg(*pc, char *)); 
-}	
+	return (printf("%s\n", ft_ssttoa_base(0, 10)));
+}

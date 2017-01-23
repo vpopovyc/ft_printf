@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:20:45 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/21 20:36:20 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/23 17:28:05 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void		ft_flags(char *sv, t_printf **pf)
     while (*(++sv))
     {
         (*sv >= '1' && *sv <= '9' && f) ? f = 0 : 0;
-        (*sv == '#') ? (*pf)->conv_flag[0] = '#': 0;
-        (*sv == '-') ? (*pf)->conv_flag[1] = '-': 0;
-        (*sv == '+') ? (*pf)->conv_flag[2] = '+': 0;
-        (*sv == ' ') ? (*pf)->conv_flag[3] = ' ': 0;
+        (*sv == '#') ? (*pf)->conv_flag[0] = '#' : 0;
+        (*sv == '-') ? (*pf)->conv_flag[1] = '-' : 0;
+        (*sv == '+') ? (*pf)->conv_flag[2] = '+' : 0;
+        (*sv == ' ') ? (*pf)->conv_flag[3] = ' ' : 0;
         if (*sv == '0' && f)
         {
             (*pf)->conv_flag[4] = '0';
@@ -44,7 +44,13 @@ static void		ft_flags(char *sv, t_printf **pf)
         }
         (!ft_isdigit(*sv)) ? f = 1 : 0;
     }
-    (*pf)->cl = *(--sv);
+   	if (ft_isprintf_up_spec(*(--sv)))
+	 {
+	   	(*pf)->cl = ft_tolower(*sv);	
+		(*pf)->size_spec = 3;
+	 }
+	else
+	 	(*pf)->cl = *sv;
 }
 
 static void		ft_size_spec(char *sv, t_printf **pf)
@@ -61,7 +67,7 @@ static void		ft_size_spec(char *sv, t_printf **pf)
         (*sv == 'h' && *(sv + 1) > spec && hh > spec) ? spec = hh : 0;
         (*sv == 'l' && *(sv + 1) == 'l' && ll > spec) ? spec = ll : 0;
     }
-    (*pf)->size_spec = spec;
+    ((*pf)->size_spec < spec) ? (*pf)->size_spec = spec : 0;
 }
 
 static void		ft_minfld_presc(char *sv, t_printf **pf)
@@ -116,6 +122,7 @@ int             ft_printf(char *sv, ...)
 			ft_s_spec(&pf, sv);
 			pf->ft = ft_strnfjoin(pf->ft, sv - pf->nf, pf->nf);
 			status(pf);
+	//		ft_making_move(&pf, &pc);
 			pf->nf = 0;                  // Move it to another ft
 			sv += pf->lspc + 1;
 		}

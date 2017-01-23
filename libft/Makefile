@@ -6,7 +6,7 @@
 #    By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 15:22:42 by vpopovyc          #+#    #+#              #
-#    Updated: 2017/01/21 18:32:02 by vpopovyc         ###   ########.fr        #
+#    Updated: 2017/01/23 19:50:30 by vpopovyc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprintf_spec.c ft_isalpha.c \
 		ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 		ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_do_op.c ft_intzero.c \
-		ft_re_alloc.c ft_strnfjoin.c ft_atosize_t.c ft_isprintf_spec.c
+		ft_re_alloc.c ft_strnfjoin.c ft_atosize_t.c ft_isprintf_spec.c \
+		ft_isprintf_up_spec.c ft_ssize_t_toa_base.c ft_size_t_toa_base.c
 
 OBJ = $(SRC:.c=.o) 
 

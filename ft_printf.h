@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:21:16 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/21 21:04:01 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/23 20:42:42 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 typedef struct	s_printf
 {
 	char		*ft;
-	int			nf;
 	char 		*spec;
+	int			nf;
 	int			lspc;
 	int			lnpr;
 	int			min_field;
@@ -26,7 +26,15 @@ typedef struct	s_printf
     int			size_spec;
 	char		cl;
 	char		*conv_flag;
+	char		*text;
 }				t_printf;
+typedef
+{
+	
+
+
+
+}
 typedef enum	size_spec
 {
 	beer, hh, h, l, ll, j, z
@@ -40,6 +48,7 @@ t_printf		*ft_s_printf_new(void);
 
 
 /*TO DO 
-	now, you need to use all data that you saved to involve right output
- 
+	now, you need to use all data that you saved to involve right output:
+		- ok, you get group on conversions, step in to get right ascii output,
+			save it into struct, move to prescizion and min_field && count printable chars
 	and easiest one: end the fucking ft_printf :3;*/

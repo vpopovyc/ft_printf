@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tell_me_flag_baby.c                             :+:      :+:    :+:   */
+/*   t_size_t.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 19:00:23 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 18:58:27 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/23 19:34:25 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/23 20:04:54 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_get_flag(va_list *pc, char *sv)
+int		main(void)
 {
-	if (*sv == 'c')
-		ft_putchar((char)va_arg(*pc, int));
-	else if (*sv == 'd' || *sv == 'i')
-		ft_putnbr(va_arg(*pc, int));
-	else if (*sv == 's')
-		ft_putstr(va_arg(*pc, char *)); 
-}	
+	char *s = ft_size_t_toa_base(0, 10);
+	printf("%s\n", s);
+	return (0);
+}
