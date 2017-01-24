@@ -6,12 +6,12 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:20:45 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 17:28:05 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/24 20:34:34 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 static void	status(t_printf *s)
 {
 	printf("Format string:            %s\n", s->ft);
@@ -24,7 +24,7 @@ static void	status(t_printf *s)
 	printf("Prescision:               %i\n", s->presc);
 	printf("Size specifier:           %i\n", s->size_spec);
 }
-
+*/
 static void		ft_flags(char *sv, t_printf **pf)
 {
     char 	f;
@@ -121,8 +121,8 @@ int             ft_printf(char *sv, ...)
 		{
 			ft_s_spec(&pf, sv);
 			pf->ft = ft_strnfjoin(pf->ft, sv - pf->nf, pf->nf);
-			status(pf);
-	//		ft_making_move(&pf, &pc);
+		//	status(pf);
+			ft_making_move(&pf, &pc);
 			pf->nf = 0;                  // Move it to another ft
 			sv += pf->lspc + 1;
 		}

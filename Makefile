@@ -6,13 +6,13 @@
 #    By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/11 16:18:35 by vpopovyc          #+#    #+#              #
-#    Updated: 2017/01/23 17:23:48 by vpopovyc         ###   ########.fr        #
+#    Updated: 2017/01/24 20:07:53 by vpopovyc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 
-SRC = main.c format.c ft_s_printf.c
+SRC = main.c format.c ft_s_printf.c ft_group1.c ft_making_move.c
 
 OBJ = $(SRC:.c=.o)
 

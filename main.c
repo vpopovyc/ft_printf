@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 19:39:36 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 17:28:57 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/24 20:43:22 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		main(void)
 {
-	int i =	ft_printf("rama%0-+*10.4Dlama%42.1lli");
+	ft_printf("rama %-03i", 42);
+	printf("\nrama %-03i\n", 42);
 	return (0);
 }

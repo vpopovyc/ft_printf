@@ -26,7 +26,8 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprintf_spec.c ft_isalpha.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 		ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_do_op.c ft_intzero.c \
 		ft_re_alloc.c ft_strnfjoin.c ft_atosize_t.c ft_isprintf_spec.c \
-		ft_isprintf_up_spec.c ft_ssize_t_toa_base.c ft_size_t_toa_base.c
+		ft_isprintf_up_spec.c ft_ssize_t_toa_base.c ft_size_t_toa_base.c \
+		ft_iscl_group1.c ft_iscl_group2.c
 
 OBJ = $(SRC:.c=.o) 
 

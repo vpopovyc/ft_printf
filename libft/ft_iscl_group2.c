@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_making_move.c                                   :+:      :+:    :+:   */
+/*   ft_iscl_group2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/15 14:11:32 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/24 20:12:35 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/24 19:57:42 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/24 19:57:57 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/libft.h"
 
-static void		ft_get_arg(t_printf **pf, va_list *pc)
+int		ft_iscl_group2(char c)
 {
-	(ft_iscl_group1((*pf)->cl)) ? ft_group1(pf, pc) : 0;
-}
-
-void			ft_making_move(t_printf **pf, va_list *pc)
-{
-	ft_get_arg(pf, pc);
+    if (c == 'o' || c == 'u' || c == 'x' || c == 'X')
+        return (1);
+    return (0);
 }

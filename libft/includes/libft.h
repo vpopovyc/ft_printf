@@ -93,4 +93,6 @@ int					ft_isprintf_spec(int c);
 int					ft_isprintf_up_spec(int c);
 char				*ft_ssize_t_toa_base(ssize_t value, ssize_t base);
 char                *ft_size_t_toa_base(size_t value, size_t base);
+int                 ft_iscl_group1(char c);
+int                 ft_iscl_group2(char c);
 #endif

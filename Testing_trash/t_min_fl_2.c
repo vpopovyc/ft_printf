@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_making_move.c                                   :+:      :+:    :+:   */
+/*   t_min_fl_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/15 14:11:32 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/24 20:12:35 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/24 15:38:28 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/24 19:48:12 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_get_arg(t_printf **pf, va_list *pc)
+int		main(void)
 {
-	(ft_iscl_group1((*pf)->cl)) ? ft_group1(pf, pc) : 0;
-}
-
-void			ft_making_move(t_printf **pf, va_list *pc)
-{
-	ft_get_arg(pf, pc);
+	printf("%+15.10i\n", 10);
+	return (0);
 }
