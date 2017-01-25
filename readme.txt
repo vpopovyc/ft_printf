@@ -22,3 +22,10 @@ make liball	- compile libft
 make libclean	- remove *.o files in libft folder
 
 make libre	- rule libfclean && liball
+
+http://www.linuxforums.org/forum/linux-programming-scripting/88-color-console.html
+
+https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+
+http://stackoverflow.com/questions/3219393/stdlib-and-colored-output-in-c
+
