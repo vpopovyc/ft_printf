@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:20:45 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/24 20:34:34 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/25 21:03:56 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	status(t_printf *s)
 	printf("Specifier string:         %s\n", s->spec);
 	printf("Lenght of specifier:      %i\n", s->lspc);
 	printf("Conversion letter:        %c\n", s->cl);
-	printf("Conversion flags:         %s\n", s->conv_flag);
+	printf("Conversion flags:         %s\n", s->cf);
 	printf("Minimal field:            %i\n", s->min_field);
 	printf("Prescision:               %i\n", s->presc);
-	printf("Size specifier:           %i\n", s->size_spec);
+	printf("Size specifier:           %i\n", s->sm);
 }
 */
 static void		ft_flags(char *sv, t_printf **pf)
@@ -33,13 +33,13 @@ static void		ft_flags(char *sv, t_printf **pf)
     while (*(++sv))
     {
         (*sv >= '1' && *sv <= '9' && f) ? f = 0 : 0;
-        (*sv == '#') ? (*pf)->conv_flag[0] = '#' : 0;
-        (*sv == '-') ? (*pf)->conv_flag[1] = '-' : 0;
-        (*sv == '+') ? (*pf)->conv_flag[2] = '+' : 0;
-        (*sv == ' ') ? (*pf)->conv_flag[3] = ' ' : 0;
+        (*sv == '#') ? (*pf)->cf[0] = '#' : 0;
+        (*sv == '-') ? (*pf)->cf[1] = '-' : 0;
+        (*sv == '+') ? (*pf)->cf[2] = '+' : 0;
+        (*sv == ' ') ? (*pf)->cf[3] = ' ' : 0;
         if (*sv == '0' && f)
         {
-            (*pf)->conv_flag[4] = '0';
+            (*pf)->cf[4] = '0';
             f = 1;
         }
         (!ft_isdigit(*sv)) ? f = 1 : 0;
@@ -47,7 +47,7 @@ static void		ft_flags(char *sv, t_printf **pf)
    	if (ft_isprintf_up_spec(*(--sv)))
 	 {
 	   	(*pf)->cl = ft_tolower(*sv);	
-		(*pf)->size_spec = 3;
+		(*pf)->sm = 3;
 	 }
 	else
 	 	(*pf)->cl = *sv;
@@ -67,7 +67,7 @@ static void		ft_size_spec(char *sv, t_printf **pf)
         (*sv == 'h' && *(sv + 1) > spec && hh > spec) ? spec = hh : 0;
         (*sv == 'l' && *(sv + 1) == 'l' && ll > spec) ? spec = ll : 0;
     }
-    ((*pf)->size_spec < spec) ? (*pf)->size_spec = spec : 0;
+    ((*pf)->sm < spec) ? (*pf)->sm = spec : 0;
 }
 
 static void		ft_minfld_presc(char *sv, t_printf **pf)
@@ -121,9 +121,7 @@ int             ft_printf(char *sv, ...)
 		{
 			ft_s_spec(&pf, sv);
 			pf->ft = ft_strnfjoin(pf->ft, sv - pf->nf, pf->nf);
-		//	status(pf);
 			ft_making_move(&pf, &pc);
-			pf->nf = 0;                  // Move it to another ft
 			sv += pf->lspc + 1;
 		}
 		else
@@ -131,6 +129,11 @@ int             ft_printf(char *sv, ...)
 			++pf->nf;
 			++sv;
 		}
+	}
+	if (pf->nf != 0)
+	{
+		ft_putstr(sv - pf->nf);
+		pf->piska += ft_strlen(sv - pf->nf);	
 	}
 	va_end(pc);
 	return (pf->lnpr);

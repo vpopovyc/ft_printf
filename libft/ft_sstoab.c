@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssize_t_toa_base.c                              :+:      :+:    :+:   */
+/*   ft_sstoab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -25,7 +25,7 @@ static int		ft_len(ssize_t value, ssize_t base)
 	return (len);
 }
 
-char			*ft_ssize_t_toa_base(ssize_t value, ssize_t base)
+char			*ft_sstoab(ssize_t value, ssize_t base)
 {
 	size_t		t;
 	char		fs;

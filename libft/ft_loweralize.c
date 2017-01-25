@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size_t_toa_base.c                               :+:      :+:    :+:   */
+/*   ft_loweralize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 19:37:00 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 20:05:22 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/25 20:06:04 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/25 20:08:41 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static int		ft_len(size_t v, size_t b)
+void	ft_loweralize(char *s)
 {
-	int		ln;
-
-	ln = (v == 0) ? 1 : 0;
-	while (v)
+	while (*s)
 	{
-		v /= b;
-		++ln;
+		*s = ft_tolower(*s);
+		++s;
 	}
-	return (ln);
-}
-
-char			*ft_size_t_toa_base(size_t v, size_t b)
-{
-	int			ln;
-	char		*st;
-
-	if (b < 2 || b > 16)
-		return (NULL);
-	ln = ft_len(v, b);
-	st = ft_strnew(ln);
-	while (--ln >= 0)
-	{
-		st[ln] = ((v % b) > 9) ? ((v % b) - 10 + 'A') : ((v % b) + '0');
-		v /= b;
-	}
-	return (st);
 }

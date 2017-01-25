@@ -1,50 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssttoa_base.c                                   :+:      :+:    :+:   */
+/*   ft_stoab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 18:18:54 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 20:07:25 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/23 19:37:00 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/23 20:05:22 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static int		ft_len(ssize_t value, ssize_t base)
+static int		ft_len(size_t v, size_t b)
 {
-	int		len;
+	int		ln;
 
-	len = (value == 0) ? 1 : 0;
-	while (value)
+	ln = (v == 0) ? 1 : 0;
+	while (v)
 	{
-		value /= base;
-		++len;
+		v /= b;
+		++ln;
 	}
-	return (len);
+	return (ln);
 }
 
-char			*ft_ssize_ttoa_base(ssize_t value, ssize_t base)
+char			*ft_stoab(size_t v, size_t b)
 {
-	size_t		t;
-	char		fs;
 	int			ln;
 	char		*st;
-	char		b;
 
-	if (base < 2 || base > 16)
+	if (b < 2 || b > 16)
 		return (NULL);
-	b = base;
-	t = (value < 0) ? -value : value;
-	fs = (value < 0 && b == 10) ? 1 : 0;
-	ln = (value < 0) ? (ft_len(t, b) + 1) : (ft_len(t, b));
+	ln = ft_len(v, b);
 	st = ft_strnew(ln);
-	(fs == 1) ? st[0] = '-' : 0;
-	while (--ln >= fs)
+	while (--ln >= 0)
 	{
-		st[ln] = ((t % b) > 9) ? ((t % b) - 10 + 'A') : ((t % b) + '0');
-		t /= b;
+		st[ln] = ((v % b) > 9) ? ((v % b) - 10 + 'A') : ((v % b) + '0');
+		v /= b;
 	}
 	return (st);
 }

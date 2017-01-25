@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 16:48:30 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/23 19:48:49 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/25 20:11:26 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,10 @@ char  				*ft_strnfjoin(char *s1, char *s2, size_t n);
 size_t				ft_atosize_t(char *s);
 int					ft_isprintf_spec(int c);
 int					ft_isprintf_up_spec(int c);
-char				*ft_ssize_t_toa_base(ssize_t value, ssize_t base);
-char                *ft_size_t_toa_base(size_t value, size_t base);
+char				*ft_sstoab(ssize_t value, ssize_t base);
+char                *ft_stoab(size_t value, size_t base);
 int                 ft_iscl_group1(char c);
 int                 ft_iscl_group2(char c);
+void				ft_capitalize(char *s);
+void				ft_loweralize(char *s);
 #endif
