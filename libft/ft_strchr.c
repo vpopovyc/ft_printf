@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	char	*beer;
 	int		beer2;
 
-	beer2 = ft_strlen(s);
+	beer2 = (int)ft_strlen(s);
 	while (beer2-- >= 0)
 	{
 		if (*s == c)

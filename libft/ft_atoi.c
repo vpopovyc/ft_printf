@@ -17,6 +17,7 @@ int		ft_atoi(const char *str)
 	char	i;
 	int		beer;
 
+    i = 1;
 	beer = 0;
 	while ((((*str >= 9) && (*str <= 13)) || (*str == 32)) && (*str))
 		str++;

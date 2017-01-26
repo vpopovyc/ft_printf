@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+//void        ft_puppies_killa(t_printf **pf)
+
 void		ft_s_printf_clr(t_printf **pf)
 {
 	(*pf)->cl = 0;
@@ -23,13 +25,15 @@ void		ft_s_printf_clr(t_printf **pf)
 	ft_strclr((*pf)->spec);
 	ft_memset((*pf)->cf, '*', 5);
 	/* groups */
-	ft_strclr((*pf)->tx);
-	ft_strclr((*pf)->prefix);
-	ft_strclr((*pf)->field);
+	ft_strdel(&(*pf)->tx);
+    (*pf)->ltx = 0;
+	(*pf)->prefix = 0;
+    (*pf)->prx = 0;
+    (*pf)->field = 0;
+    (*pf)->fld = 0;
 	(*pf)->sign = 0;
 	(*pf)->hex = 0;
 	(*pf)->base = 10;
-	(*pf)->ltx = 0;
 }
 
 t_printf	*ft_s_printf_new(void)
@@ -43,6 +47,7 @@ t_printf	*ft_s_printf_new(void)
 	new->min_field = 0;
 	new->sm = 0;
 	new->nf = 0;
+    new->mnpr = INT_MAX;
 	new->lnpr = 0;
 	new->ft = ft_strnew(0);
 	new->spec = ft_strnew(0);
@@ -50,12 +55,14 @@ t_printf	*ft_s_printf_new(void)
 	ft_memset(new->cf, '*', 5);
 	/*      group         */
 	new->tx = NULL;
-	new->prefix = ft_strnew(0);
-	new->field = ft_strnew(0);
+    new->ltx = 0;
+	new->prefix = 0;
+    new->prx = 0;
+	new->field = 0;
+    new->fld = 0;
 	new->sign = 0;
 	new->hex = 0;
 	new->base = 10;
-	new->ltx = 0;
-	new->piska = 0;
+	new->lnpr = 0;
 	return (new);
 }

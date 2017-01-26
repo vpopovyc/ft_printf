@@ -14,8 +14,8 @@
 
 int		main(void)
 {
-	ft_printf("rama %+#10.4X\n", 11);
-	   printf("rama %+#10.4X\n", 11);
+	printf("Bytes returned: %i\n", ft_printf("rama \n", 42, 42));
+	printf("Bytes returned: %i\n",    printf("rama \n", 42, 42));
 
 	return (0);
 }

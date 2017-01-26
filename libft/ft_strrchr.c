@@ -15,10 +15,11 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*beer;
-	int		beer2;
+	ssize_t	beer2;
 	int		i;
 
 	i = 0;
+    beer = NULL;
 	beer2 = ft_strlen(s);
 	while (beer2-- >= 0)
 	{

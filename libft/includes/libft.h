@@ -97,4 +97,6 @@ int                 ft_iscl_group1(char c);
 int                 ft_iscl_group2(char c);
 void				ft_capitalize(char *s);
 void				ft_loweralize(char *s);
+void				ft_psn(char *s, unsigned int n);
+void				ft_pssn(char s, unsigned int n);
 #endif

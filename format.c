@@ -92,7 +92,7 @@ static void		ft_minfld_presc(char *sv, t_printf **pf)
     }
 }
 
-static void     ft_s_spec(t_printf **pf, char *sv)
+void            ft_s_spec(t_printf **pf, char *sv)
 {
     ft_s_printf_clr(pf);
     while (*(++sv))
@@ -104,7 +104,8 @@ static void     ft_s_spec(t_printf **pf, char *sv)
     (*pf)->spec = ft_strnfjoin((*pf)->spec, sv - (*pf)->lspc, (*pf)->lspc + 1);
     ft_flags((*pf)->spec, pf);
     ft_size_spec((*pf)->spec, pf);
-    ft_minfld_presc((*pf)->spec, pf);                                
+    ft_minfld_presc((*pf)->spec, pf);
+ //   status(*pf);
 }
 
 int             ft_printf(char *sv, ...)
@@ -115,26 +116,7 @@ int             ft_printf(char *sv, ...)
 	if ((pf = ft_s_printf_new()) == NULL)
 	   return (-1);	
 	va_start(pc, sv);
-	while (*sv)
-	{
-		if (*sv == '%')
-		{
-			ft_s_spec(&pf, sv);
-			pf->ft = ft_strnfjoin(pf->ft, sv - pf->nf, pf->nf);
-			ft_making_move(&pf, &pc);
-			sv += pf->lspc + 1;
-		}
-		else
-		{	
-			++pf->nf;
-			++sv;
-		}
-	}
-	if (pf->nf != 0)
-	{
-		ft_putstr(sv - pf->nf);
-		pf->piska += ft_strlen(sv - pf->nf);	
-	}
+    ft_making_move(&pf, &pc, sv);
 	va_end(pc);
 	return (pf->lnpr);
 }
