@@ -12,7 +12,7 @@
 
 NAME = ft_printf
 
-SRC = main.c format.c ft_s_printf.c ft_group1.c ft_group2.c ft_making_move.c
+SRC = main.c format.c ft_s_printf.c ft_group_onetwo.c ft_group_united.c ft_making_move.c
 
 OBJ = $(SRC:.c=.o)
 

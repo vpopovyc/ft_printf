@@ -14,7 +14,6 @@
 		976051431E3A7A62007C46C5 /* format.c in Sources */ = {isa = PBXBuildFile; fileRef = 9760504B1E3A11FA007C46C5 /* format.c */; };
 		976051441E3A7A62007C46C5 /* ft_making_move.c in Sources */ = {isa = PBXBuildFile; fileRef = 9760504E1E3A11FA007C46C5 /* ft_making_move.c */; };
 		976051461E3A7A62007C46C5 /* ft_s_printf.c in Sources */ = {isa = PBXBuildFile; fileRef = 976050501E3A11FA007C46C5 /* ft_s_printf.c */; };
-		976051481E3A8FBA007C46C5 /* ft_pssn.c in Sources */ = {isa = PBXBuildFile; fileRef = 976051471E3A8FBA007C46C5 /* ft_pssn.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +37,6 @@
 		9760504F1E3A11FA007C46C5 /* ft_printf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ft_printf.h; sourceTree = "<group>"; };
 		976050501E3A11FA007C46C5 /* ft_s_printf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ft_s_printf.c; sourceTree = "<group>"; };
 		976050561E3A1209007C46C5 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		976050F01E3A79EC007C46C5 /* a.out */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = a.out; sourceTree = "<group>"; };
 		976050F11E3A79EC007C46C5 /* author */ = {isa = PBXFileReference; lastKnownFileType = text; path = author; sourceTree = "<group>"; };
 		976050F21E3A79EC007C46C5 /* ft_atoi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_atoi.c; sourceTree = "<group>"; };
 		976050F31E3A79EC007C46C5 /* ft_atosize_t.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ft_atosize_t.c; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		976050EF1E3A79EC007C46C5 /* libft */ = {
 			isa = PBXGroup;
 			children = (
-				976050F01E3A79EC007C46C5 /* a.out */,
 				976050F11E3A79EC007C46C5 /* author */,
 				976050F21E3A79EC007C46C5 /* ft_atoi.c */,
 				976050F31E3A79EC007C46C5 /* ft_atosize_t.c */,
@@ -335,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				976051401E3A7A62007C46C5 /* main.c in Sources */,
-				976051481E3A8FBA007C46C5 /* ft_pssn.c in Sources */,
 				976051411E3A7A62007C46C5 /* ft_group_united.c in Sources */,
 				976051421E3A7A62007C46C5 /* ft_group_onetwo.c in Sources */,
 				976051431E3A7A62007C46C5 /* format.c in Sources */,
@@ -508,6 +504,7 @@
 				976050491E3A1171007C46C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9760514A1E3A9E9E007C46C5 /* Build configuration list for PBXLegacyTarget "libft.a" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +513,7 @@
 				9760514C1E3A9E9E007C46C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
