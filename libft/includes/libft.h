@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 16:48:30 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/25 20:11:26 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/28 18:01:20 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <limits.h>
+# include <locale.h>
+# include <wchar.h>
+# include <wctype.h>
 
 typedef struct		s_list
 {
@@ -99,4 +102,5 @@ void				ft_capitalize(char *s);
 void				ft_loweralize(char *s);
 void				ft_psn(char *s, unsigned int n);
 void				ft_pssn(char s, unsigned int n);
+size_t				ft_wstrlen(wchar_t *s);
 #endif

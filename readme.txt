@@ -23,6 +23,8 @@ make libclean	- remove *.o files in libft folder
 
 make libre	- rule libfclean && liball
 
+https://server.179.ru/tasks/python/2014b1/22-bits.html
+
 http://www.linuxforums.org/forum/linux-programming-scripting/88-color-console.html
 
 https://en.wikipedia.org/wiki/ANSI_escape_code#Colors

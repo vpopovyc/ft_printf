@@ -14,6 +14,7 @@
 		976051431E3A7A62007C46C5 /* format.c in Sources */ = {isa = PBXBuildFile; fileRef = 9760504B1E3A11FA007C46C5 /* format.c */; };
 		976051441E3A7A62007C46C5 /* ft_making_move.c in Sources */ = {isa = PBXBuildFile; fileRef = 9760504E1E3A11FA007C46C5 /* ft_making_move.c */; };
 		976051461E3A7A62007C46C5 /* ft_s_printf.c in Sources */ = {isa = PBXBuildFile; fileRef = 976050501E3A11FA007C46C5 /* ft_s_printf.c */; };
+		97FB5A3C1E3CF03700BFAD52 /* ft_bit_party.c in Sources */ = {isa = PBXBuildFile; fileRef = 97FB5A3B1E3CF03700BFAD52 /* ft_bit_party.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +115,7 @@
 		9760513C1E3A79EC007C46C5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		9760513D1E3A7A30007C46C5 /* libft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libft.a; path = libft/libft.a; sourceTree = "<group>"; };
 		976051471E3A8FBA007C46C5 /* ft_pssn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ft_pssn.c; sourceTree = "<group>"; };
+		97FB5A3B1E3CF03700BFAD52 /* ft_bit_party.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ft_bit_party.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				9760504E1E3A11FA007C46C5 /* ft_making_move.c */,
 				9760504F1E3A11FA007C46C5 /* ft_printf.h */,
 				976050501E3A11FA007C46C5 /* ft_s_printf.c */,
+				97FB5A3B1E3CF03700BFAD52 /* ft_bit_party.c */,
 				976050411E3A1171007C46C5 /* Products */,
 				976050EE1E3A79EB007C46C5 /* Frameworks */,
 			);
@@ -267,6 +270,19 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = libft.a;
 		};
+		97FB5A3D1E3CF85700BFAD52 /* test */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 97FB5A3E1E3CF85700BFAD52 /* Build configuration list for PBXLegacyTarget "test" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = test;
+			passBuildSettingsInEnvironment = 1;
+			productName = test;
+		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +322,10 @@
 						DevelopmentTeam = HKJ88XEM2N;
 						ProvisioningStyle = Automatic;
 					};
+					97FB5A3D1E3CF85700BFAD52 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 9760503B1E3A1171007C46C5 /* Build configuration list for PBXProject "ft_printf" */;
@@ -322,6 +342,7 @@
 			targets = (
 				9760503F1E3A1171007C46C5 /* ft_printf */,
 				976051491E3A9E9E007C46C5 /* libft.a */,
+				97FB5A3D1E3CF85700BFAD52 /* test */,
 			);
 		};
 /* End PBXProject section */
@@ -335,6 +356,7 @@
 				976051411E3A7A62007C46C5 /* ft_group_united.c in Sources */,
 				976051421E3A7A62007C46C5 /* ft_group_onetwo.c in Sources */,
 				976051431E3A7A62007C46C5 /* format.c in Sources */,
+				97FB5A3C1E3CF03700BFAD52 /* ft_bit_party.c in Sources */,
 				976051441E3A7A62007C46C5 /* ft_making_move.c in Sources */,
 				976051461E3A7A62007C46C5 /* ft_s_printf.c in Sources */,
 			);
@@ -439,6 +461,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libft",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -452,6 +475,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libft",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -485,6 +509,31 @@
 			};
 			name = Release;
 		};
+		97FB5A3F1E3CF85700BFAD52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		97FB5A401E3CF85700BFAD52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -511,6 +560,15 @@
 			buildConfigurations = (
 				9760514B1E3A9E9E007C46C5 /* Debug */,
 				9760514C1E3A9E9E007C46C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97FB5A3E1E3CF85700BFAD52 /* Build configuration list for PBXLegacyTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97FB5A3F1E3CF85700BFAD52 /* Debug */,
+				97FB5A401E3CF85700BFAD52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

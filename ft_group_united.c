@@ -48,17 +48,20 @@ void				ft_group_prefix(t_printf **pf)
     if ((*pf)->prx < 0)
         (*pf)->prx = -(*pf)->prx;
     else
+    {
+        (*pf)->prx = 0;
         return ;
+    }
     (*pf)->lnpr += (*pf)->prx;
     if (ft_check(pf) == -1)
         return ;
-    (*pf)->prefix = '\0';
+    (*pf)->prefix = '0';
 }
 
 void				ft_group_field(t_printf **pf)
 {
     ft_group_prefix(pf);
-    (*pf)->fld = (*pf)->ltx - (*pf)->min_field;
+    (*pf)->fld = (*pf)->ltx + (*pf)->prx - (*pf)->min_field;
    	if ((*pf)->fld < 0)
         (*pf)->fld = -(*pf)->fld;
     else if ((*pf)->lnpr != -1)

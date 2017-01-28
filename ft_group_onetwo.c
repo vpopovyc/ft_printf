@@ -24,7 +24,6 @@ static void			ft_group1_sign(t_printf **pf)
 static	void	ft_group2_sign(t_printf **pf)
 {
     (*pf)->ltx = (int)ft_strlen((*pf)->tx);
-
     if ((*pf)->cf[0] == '#' && (*pf)->base != 10)
     {
         if ((*pf)->base == 8)
@@ -37,12 +36,12 @@ static	void	ft_group2_sign(t_printf **pf)
         {
             (*pf)->min_field -= 2;
             (*pf)->lnpr += 2;
-            (*pf)->hex = ((*pf)->cl == 'x') ? 'x' : 'X';
+            (*pf)->hex = ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? 'x' : 'X';
         }
         (*pf)->sign = '0';
     }
-    ((*pf)->cl == 'x') ? ft_loweralize((*pf)->tx) : 0;
-	((*pf)->cl == 'x') ? ft_loweralize(&(*pf)->sign) : 0;
+    ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? ft_loweralize((*pf)->tx) : 0;
+    
 }
 
 void				ft_group1(t_printf **pf, va_list *pc)
@@ -65,12 +64,12 @@ void				ft_group1(t_printf **pf, va_list *pc)
     ft_group_field(pf);
 }
 
+
+
 void			ft_group2(t_printf **pf, va_list *pc)
 {
 	char	bs;
 
-	((*pf)->cl == 'o' || (*pf)->cl == 'O') ? (*pf)->base = 8 : 0;
-	((*pf)->cl == 'x' || (*pf)->cl == 'X') ? (*pf)->base = 16 : 0;
 	bs = (*pf)->base;
 	if ((*pf)->sm == 0)
 		(*pf)->tx = ft_stoab(va_arg(*pc, unsigned int), bs);

@@ -64,10 +64,15 @@ static void		ft_size_spec(char *sv, t_printf **pf)
         (*sv == 'l' && l > spec) ? spec = l : 0;
         (*sv == 'j' && j > spec) ? spec = j : 0;
         (*sv == 'z' && z > spec) ? spec = z : 0;
-        (*sv == 'h' && *(sv + 1) > spec && hh > spec) ? spec = hh : 0;
+        (*sv == 'h' && *(sv + 1) == 'h' && hh > spec) ? spec = hh : 0;
         (*sv == 'l' && *(sv + 1) == 'l' && ll > spec) ? spec = ll : 0;
     }
     ((*pf)->sm < spec) ? (*pf)->sm = spec : 0;
+    ((*pf)->cl == 'p') ? (*pf)->sm = z : 0;
+    ((*pf)->cl == 'p') ? (*pf)->cf[0] = '#' : 0;
+    ((*pf)->cl == 'o') ? (*pf)->base = 8 : 0;
+    ((*pf)->cl == 'X') ? (*pf)->base = 16 : 0;
+    ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? (*pf)->base = 16 : 0;
 }
 
 static void		ft_minfld_presc(char *sv, t_printf **pf)
@@ -105,7 +110,7 @@ void            ft_s_spec(t_printf **pf, char *sv)
     ft_flags((*pf)->spec, pf);
     ft_size_spec((*pf)->spec, pf);
     ft_minfld_presc((*pf)->spec, pf);
- //   status(*pf);
+/*  status(*pf); */
 }
 
 int             ft_printf(char *sv, ...)

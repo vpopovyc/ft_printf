@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iscl_group2.c                                   :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/24 19:57:42 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/24 19:57:57 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/28 17:37:32 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/28 17:59:54 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_iscl_group2(char c)
+size_t		ft_wstrlen(wchar_t *s)
 {
-    if (c == 'o' || c == 'u' || c == 'x' || c == 'p' || c == 'X')
-        return (1);
-    return (0);
+	size_t len;
+
+	len = 0;
+	while(*s != L'\0')
+	{
+		++len;
+		++s;
+	}
+	return (len);
 }
