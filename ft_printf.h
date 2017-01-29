@@ -70,8 +70,8 @@ void			ft_group_field(t_printf **pf);
 	now, you need to use all data that you saved to involve right output:
 		- ok, group1(d, D, i) – DONE!
 		- ok, (o, O, u, U, x, X) – DONE!
-		- now, (s, c, S, C) - and mandatory part is over
-		- ok, your bicycle is too slow riding( U still doing task 3.
+		- done, (s, c, S, C)
+		- TEST (s, c, S, C)
 		- !IMPORTANT! ft_puppies_killa
         - Dont forget about new fts in libft
         - NICEEEEEEEEEEEE!!@#!@#@!
