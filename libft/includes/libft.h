@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 16:48:30 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/28 18:01:20 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/01/29 21:59:51 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,14 @@ char				*ft_sstoab(ssize_t value, ssize_t base);
 char                *ft_stoab(size_t value, size_t base);
 int                 ft_iscl_group1(char c);
 int                 ft_iscl_group2(char c);
+int					ft_iscl_group3(char c);
 void				ft_capitalize(char *s);
 void				ft_loweralize(char *s);
 void				ft_psn(char *s, unsigned int n);
 void				ft_pssn(char s, unsigned int n);
 size_t				ft_wstrlen(wchar_t *s);
+char				ft_wstrblen(wchar_t c);
+char 			   *ft_uct8(wchar_t c, unsigned char *data, char n);
+void				ft_pspp(char **s);
+size_t				ft_wstrmem(wchar_t *s);
 #endif

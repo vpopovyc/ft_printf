@@ -33,7 +33,7 @@ static	void	ft_group2_sign(t_printf **pf)
             ++(*pf)->lnpr;
         }
         else if ((*pf)->base == 16)
-        {
+        {   
             (*pf)->min_field -= 2;
             (*pf)->lnpr += 2;
             (*pf)->hex = ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? 'x' : 'X';

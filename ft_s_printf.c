@@ -14,6 +14,9 @@
 
 //void        ft_puppies_killa(t_printf **pf)
 
+
+
+
 void		ft_s_printf_clr(t_printf **pf)
 {
 	(*pf)->cl = 0;
@@ -24,8 +27,6 @@ void		ft_s_printf_clr(t_printf **pf)
 	ft_strclr((*pf)->ft);
 	ft_strclr((*pf)->spec);
 	ft_memset((*pf)->cf, '*', 5);
-	/* groups */
-	ft_strdel(&(*pf)->tx);
     (*pf)->ltx = 0;
 	(*pf)->prefix = 0;
     (*pf)->prx = 0;
@@ -34,7 +35,12 @@ void		ft_s_printf_clr(t_printf **pf)
 	(*pf)->sign = 0;
 	(*pf)->hex = 0;
 	(*pf)->base = 10;
+    (*pf)->c = 0;
+    ((*pf)->tx != NULL) ? free((*pf)->tx) : 0;
+    ((*pf)->wc != NULL) ? free((*pf)->wc) : 0;
+    ((*pf)->ws != NULL) ? free((*pf)->ws) : 0;
 }
+
 
 t_printf	*ft_s_printf_new(void)
 {
@@ -53,7 +59,6 @@ t_printf	*ft_s_printf_new(void)
 	new->spec = ft_strnew(0);
 	new->cf = ft_strnew(5);
 	ft_memset(new->cf, '*', 5);
-	/*      group         */
 	new->tx = NULL;
     new->ltx = 0;
 	new->prefix = 0;
@@ -64,5 +69,8 @@ t_printf	*ft_s_printf_new(void)
 	new->hex = 0;
 	new->base = 10;
 	new->lnpr = 0;
+    new->wc = NULL;
+    new->ws = NULL;
+    new->c = 0;
 	return (new);
 }

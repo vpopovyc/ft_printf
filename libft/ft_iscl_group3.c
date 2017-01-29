@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_iscl_group3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 21:44:10 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 19:06:01 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/29 13:17:42 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/29 21:08:34 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putstr(char const *s)
+int		ft_iscl_group3(char c)
 {
-	int		i;
-
-	i = -1;
-	while (s[++i] && s)
-	{
-		ft_putchar(s[i]);
-	}
+	if ((ft_isascii(c) && !ft_iscl_group1(c) && !ft_iscl_group2(c)))
+		return (1);
+	return (0);
 }

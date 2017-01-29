@@ -122,6 +122,7 @@ int             ft_printf(char *sv, ...)
 	   return (-1);	
 	va_start(pc, sv);
     ft_making_move(&pf, &pc, sv);
+    (pf->cl == 0) ? ft_putstr(sv) : 0;
 	va_end(pc);
 	return (pf->lnpr);
 }

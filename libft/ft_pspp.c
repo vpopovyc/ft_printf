@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_pspp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 21:44:10 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 19:06:01 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/29 19:02:17 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/29 19:08:34 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_pspp(char **s)
 {
-	int		i;
-
-	i = -1;
-	while (s[++i] && s)
-	{
-		ft_putchar(s[i]);
-	}
+	while (*s && s)
+		ft_putstr(*(s++));
 }

@@ -12,11 +12,13 @@
 
 #include "ft_printf.h"
 
-static int          ft_get_arg(t_printf **pf, va_list *pc)
+static int      ft_get_arg(t_printf **pf, va_list *pc)
 {
-    size_t i = (*pf)->min_field + (*pf)->nf;
-    size_t b = (*pf)->presc + (*pf)->nf;
+    size_t      i;
+    size_t      b;
     
+    i = (*pf)->min_field + (*pf)->nf;
+    b = (*pf)->presc + (*pf)->nf;
     if (b > (*pf)->mnpr || i > (*pf)->mnpr)
     {
         (*pf)->lnpr = -1;
@@ -24,6 +26,7 @@ static int          ft_get_arg(t_printf **pf, va_list *pc)
     }
 	(ft_iscl_group1((*pf)->cl)) ? ft_group1(pf, pc) : 0;
 	(ft_iscl_group2((*pf)->cl)) ? ft_group2(pf, pc) : 0;
+    (ft_iscl_group3((*pf)->cl)) ? ft_group3(pf, pc) : 0;
     if ((*pf)->lnpr == -1)
         return (0);
     (*pf)->mnpr -= (*pf)->lnpr;
@@ -31,7 +34,7 @@ static int          ft_get_arg(t_printf **pf, va_list *pc)
     return (1);
 }
 
-void			ft_making_move(t_printf **pf, va_list *pc, char *sv)
+void               ft_making_move(t_printf **pf, va_list *pc, char *sv)
 {
     while (*sv)
     {

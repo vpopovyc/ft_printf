@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_wstrblen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 21:44:10 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 19:06:01 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/29 13:54:28 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/29 21:56:39 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putstr(char const *s)
+char	ft_wstrblen(wchar_t c)
 {
-	int		i;
-
-	i = -1;
-	while (s[++i] && s)
-	{
-		ft_putchar(s[i]);
-	}
+	if (c < 0x80)
+		return (1);
+	else if (c < 0x800)
+		return (2);
+	else if (c < 0x10000)
+		return (3);
+	else if (c < 0x200000)
+		return (4);
+	return (0);
 }

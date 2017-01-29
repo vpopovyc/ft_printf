@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   t2.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 21:44:10 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 19:06:01 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/29 19:29:32 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/29 20:08:03 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+int		main(void)
 {
-	int		i;
-
-	i = -1;
-	while (s[++i] && s)
-	{
-		ft_putchar(s[i]);
-	}
+/*	char *s = strdup("lama");
+	int n = 2;
+	*(s + n) = '\0';
+   	printf("%s\n", s);	
+*/	printf("al%10.0");
+	return (0);
 }

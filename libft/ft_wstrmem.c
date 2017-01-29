@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_wstrmem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 21:44:10 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 19:06:01 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/01/29 21:56:26 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/01/29 22:00:37 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putstr(char const *s)
+size_t		ft_wstrmem(wchar_t *s)
 {
-	int		i;
+	size_t len;
 
-	i = -1;
-	while (s[++i] && s)
+	len = 0;
+	while (*s != L'\0')
 	{
-		ft_putchar(s[i]);
+		len += ft_wstrblen(*s);
+		++s;
 	}
+	return (len);
 }

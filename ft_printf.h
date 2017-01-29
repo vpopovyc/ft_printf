@@ -28,7 +28,7 @@ typedef struct	s_printf
 	char		cl;                             // Conversion letter
 	char		*cf;                            // Conversion flag
 	/*  making_move.c                 */
-	char		*tx;
+	char		*tx;                     // For group 1-2
 	int			ltx;
 	char		prefix;                  // Prescision
     int         prx;
@@ -37,6 +37,10 @@ typedef struct	s_printf
     char		sign;                      // for + or ' ' or 0
 	char		hex;                       // for x or  X
 	char		base;                      // For unsigned conversions
+    /* bit party */
+    int         c;                        // For all conversions exept s, ls
+    char        **ws;                     // For ls
+    wchar_t     *wc;
 }				t_printf;
 typedef enum	size_spec
 {
@@ -49,10 +53,11 @@ int				ft_printf(char *sv, ...);
 void			ft_s_printf_clr(t_printf **pf);
 t_printf		*ft_s_printf_new(void);
 /* making_move.c */
-void			ft_making_move(t_printf **pf, va_list *pc, char *sv);
+void            ft_making_move(t_printf **pf, va_list *pc, char *sv);
 /* group_onetwo.c */
 void    		ft_group1(t_printf **pf, va_list *pc);
 void			ft_group2(t_printf **pf, va_list *pc);
+void            ft_group3(t_printf **pf, va_list *pc);
 /* group_united.c */
 size_t          ft_check(t_printf **pf);
 void			ft_group_output(t_printf **pf);
@@ -65,7 +70,7 @@ void			ft_group_field(t_printf **pf);
 	now, you need to use all data that you saved to involve right output:
 		- ok, group1(d, D, i) – DONE!
 		- ok, (o, O, u, U, x, X) – DONE!
-		- now, (s, c, S, C, p) - and mandatory part is over
+		- now, (s, c, S, C) - and mandatory part is over
 		- ok, your bicycle is too slow riding( U still doing task 3.
 		- !IMPORTANT! ft_puppies_killa
         - Dont forget about new fts in libft
