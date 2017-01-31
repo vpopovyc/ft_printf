@@ -47,16 +47,36 @@ static void			ft_group1_sign(t_printf **pf)
     }
 }
 
+static  void    ft_shit(t_printf **pf)
+{
+    if ((*((*pf)->tx) == '0' && (*pf)->lspc >= 2))
+    {
+        if (*((*pf)->spec + (*pf)->lspc - 1) == '.' && (*pf)->presc <= 0)
+        {
+            (*pf)->ltx = 0;
+            (*pf)->cf[4] = '*';
+        }
+        else if (*((*pf)->spec + (*pf)->lspc - 1) == '0')
+        {
+            (*pf)->ltx = 0;
+            (*pf)->cf[4] = '*';
+        }
+        else if ((*pf)->cf[0] == '#')
+            (*pf)->ltx = 0;
+        else if (*((*pf)->spec + (*pf)->lspc - 1) == '+')
+            (*pf)->ltx = 1;
+    }
+}
+
 static	void	ft_group2_sign(t_printf **pf)
 {
-    ((*pf)->cl == 'p') ? (*pf)->sm = 0 : 0;
     (*pf)->ltx = (int)ft_strlen((*pf)->tx);
     if (((*pf)->cf[0] == '#' && (*pf)->base != 10))
     {
-        ((*pf)->base == 8) ? --(*pf)->presc : 0;
-        ((*pf)->base == 8) ? --(*pf)->min_field : 0;
-        ((*pf)->base == 8) ? ++(*pf)->lnpr : 0;
-        ((*pf)->base == 8) ? (*pf)->sign = '0' : 0;
+        ((*pf)->base == 8 && *((*pf)->tx) != '0') ? --(*pf)->presc : 0;
+        ((*pf)->base == 8 && *((*pf)->tx) != '0') ? --(*pf)->min_field : 0;
+        ((*pf)->base == 8 ) ? ++(*pf)->lnpr : 0;
+        ((*pf)->base == 8 ) ? (*pf)->sign = '0' : 0;
         if ((*pf)->base == 16 && (*((*pf)->tx) != '0' || (*pf)->cl == 'p'))
         {   
             (*pf)->min_field -= 2;
@@ -73,6 +93,7 @@ static	void	ft_group2_sign(t_printf **pf)
             (*((*pf)->spec + (*pf)->lspc - 1) == '#') ? (*pf)->ltx = 1 : 0;
             (*pf)->cf[4] = '*';
         }
+    ((*pf)->cl == 'o') ? ft_shit(pf) : 0;
 }
 
 void				ft_group1(t_printf **pf, va_list *pc)
@@ -97,8 +118,6 @@ void				ft_group1(t_printf **pf, va_list *pc)
 }
 
 
-
-
 void			ft_group2(t_printf **pf, va_list *pc)
 {
 	char	bs;
@@ -118,6 +137,7 @@ void			ft_group2(t_printf **pf, va_list *pc)
 		(*pf)->tx = ft_stoab(va_arg(*pc, uintmax_t), bs);
 	else if ((*pf)->sm == 6)
 		(*pf)->tx = ft_stoab(va_arg(*pc, size_t), bs);
+    ((*pf)->cl == 'p') ? (*pf)->sm = 0 : 0;
 	ft_group2_sign(pf);
 	ft_group_field(pf);
     ft_group_two_output(pf);

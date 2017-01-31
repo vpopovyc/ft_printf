@@ -18,11 +18,11 @@ int		main(void)
    // wchar_t *s = L"Антон пидор, привет Игорь"; "@moulitest: %.d %.0d", 0, 0
     
     
-    printf("\nBytes returned: %i\n", ft_printf("%.0x, %.x", 0, 0));
-    printf("\nBytes returned: %i\n",    printf("%.0x, %.x", 0, 0));
+    printf("\nBytes returned: %i\n", ft_printf("\n"));
+    printf("\nBytes returned: %i\n",    printf("\n"));
     
- //   printf("\nBytes returned: %i\n", ft_printf("%hhx", 4294967296));
- //   printf("\nBytes returned: %i\n",    printf("%hhx", 4294967296));
+    printf("\nBytes returned: %i\n", ft_printf("%c", 0));
+    printf("\nBytes returned: %i\n",    printf("%c", 0));
 
 //    printf("\nBytes returned: %i\n", ft_printf("@moulitest: %.10d", -42));
 //    printf("\nBytes returned: %i\n",    printf("@moulitest: %.10d", -42));

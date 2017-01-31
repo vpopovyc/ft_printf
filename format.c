@@ -103,7 +103,8 @@ static void		ft_minfld_presc(char *sv, t_printf **pf)
 
 void            ft_s_spec(t_printf **pf, char *sv)
 {
-    ((*pf)->mnpr < INT_MAX) ? ft_s_printf_clr(pf) : 0;
+    ((*pf)->mnpr <= INT_MAX) ? ft_s_printf_clr(pf) : 0;
+    (*pf)->lspc = 0;
     while (*(++sv))
     {
         ++(*pf)->lspc;
@@ -125,6 +126,8 @@ int             ft_printf(char *sv, ...)
 	if ((pf = ft_s_printf_new()) == NULL)
 	   return (-1);	
 	va_start(pc, sv);
+    if (ft_strlen(sv) == 1 && *sv == '%')
+        return (0);
     ft_making_move(&pf, &pc, sv);
   //  (pf->cl == 0 && pf->) ? ft_putstr(sv) : 0;
 	va_end(pc);
