@@ -55,12 +55,13 @@ t_printf		*ft_s_printf_new(void);
 /* making_move.c */
 void            ft_making_move(t_printf **pf, va_list *pc, char *sv);
 /* group_onetwo.c */
+ssize_t         ft_check(t_printf **pf);
 void    		ft_group1(t_printf **pf, va_list *pc);
 void			ft_group2(t_printf **pf, va_list *pc);
 void            ft_group3(t_printf **pf, va_list *pc);
 /* group_united.c */
-size_t          ft_check(t_printf **pf);
-void			ft_group_output(t_printf **pf);
+void            ft_group_one_output(t_printf **pf);
+void            ft_group_two_output(t_printf **pf);
 void			ft_group_prefix(t_printf **pf);
 void			ft_group_field(t_printf **pf);
 #endif

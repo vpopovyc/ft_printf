@@ -14,8 +14,8 @@
 
 static int      ft_get_arg(t_printf **pf, va_list *pc)
 {
-    size_t      i;
-    size_t      b;
+    ssize_t      i;
+    ssize_t      b;
     
     i = (*pf)->min_field + (*pf)->nf;
     b = (*pf)->presc + (*pf)->nf;

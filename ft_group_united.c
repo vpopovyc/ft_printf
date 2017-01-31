@@ -12,13 +12,6 @@
 
 #include "ft_printf.h"
 
-size_t                  ft_check(t_printf **pf)
-{
-    if ((*pf)->lnpr + (*pf)->nf + (*pf)->ltx > (*pf)->mnpr)
-        return ((*pf)->lnpr = -1);
-    return (1);
-}
-
 static void             ft_bit_output(t_printf **pf)
 {
     ft_psn((*pf)->ft, (*pf)->nf);
@@ -44,8 +37,30 @@ static void             ft_bit_output(t_printf **pf)
     }
     (*pf)->lnpr += (*pf)->nf + (*pf)->ltx;
 }
+void                    ft_group_one_output(t_printf **pf)
+{
+    ft_psn((*pf)->ft, (*pf)->nf);
+    if ((*pf)->cf[1] == '-')
+    {
+        ft_psn(&(*pf)->sign, 1);
+        ft_pssn((*pf)->prefix, (*pf)->prx);
+        ft_psn((*pf)->tx, (*pf)->ltx);
+        ft_pssn((*pf)->field, (*pf)->fld);
+    }
+    else
+    {
+        if ((*pf)->sign != '\0' && (*pf)->field == '0')
+            ft_psn(&(*pf)->sign, 1);
+        ft_pssn((*pf)->field, (*pf)->fld);
+        if ((*pf)->sign != '\0' && (*pf)->field != '0')
+            ft_psn(&(*pf)->sign, 1);
+        ft_pssn((*pf)->prefix, (*pf)->prx);
+        ft_psn((*pf)->tx, (*pf)->ltx);
+    }
+    (*pf)->lnpr += (*pf)->nf + (*pf)->ltx;
+}
 
-void                    ft_group_output(t_printf **pf)
+void                    ft_group_two_output(t_printf **pf)
 {
 	ft_psn((*pf)->ft, (*pf)->nf);
     if ((*pf)->cf[1] == '-')
@@ -58,10 +73,11 @@ void                    ft_group_output(t_printf **pf)
     }
     else
 	{
-        ((*pf)->base == 10) ? ft_psn(&(*pf)->sign, 1) : 0;
+        ((*pf)->sign != 0 && (*pf)->field == '0') ? ft_psn(&(*pf)->sign, 1) : 0;
+        ((*pf)->sign != 0 && (*pf)->field == '0') ? ft_psn(&(*pf)->hex, 1) : 0;
         ft_pssn((*pf)->field, (*pf)->fld);
-        ((*pf)->base != 10) ? ft_psn(&(*pf)->sign, 1) : 0;
-        ((*pf)->base != 10) ? ft_psn(&(*pf)->hex, 1) : 0;
+        ((*pf)->sign != 0 && (*pf)->field != '0') ? ft_psn(&(*pf)->sign, 1) : 0;
+        ((*pf)->sign != 0 && (*pf)->field != '0') ? ft_psn(&(*pf)->hex, 1) : 0;
         ft_pssn((*pf)->prefix, (*pf)->prx);
         ft_psn((*pf)->tx, (*pf)->ltx);
     }
@@ -94,19 +110,16 @@ void                    ft_group_field(t_printf **pf) /* Ended here */
     {
         if ((*pf)->hex == 42)
             return (ft_bit_output(pf));
-        return(ft_group_output(pf));
+        return ;
     }
     else
         return ;
     (*pf)->lnpr += (*pf)->fld;
     if (ft_check(pf) == -1)
         return ;
-    if ((*pf)->cf[4] != '0' || (*pf)->presc != -1 || (*pf)->cf[1] == '-')
+    if ((*pf)->cf[4] != '0' || (*pf)->presc > (*pf)->ltx || (*pf)->cf[1] == '-')
         (*pf)->field = ' ';
     else
         (*pf)->field = '0';
-    if ((*pf)->hex == 42)
-        ft_bit_output(pf);
-    else
-        ft_group_output(pf);
+    ((*pf)->hex == 42) ? ft_bit_output(pf) : 0;
 }

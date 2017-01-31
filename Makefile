@@ -6,33 +6,36 @@
 #    By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/11 16:18:35 by vpopovyc          #+#    #+#              #
-#    Updated: 2017/01/25 20:36:32 by vpopovyc         ###   ########.fr        #
+#    Updated: 2017/01/30 17:55:18 by vpopovyc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 
-SRC = main.c format.c ft_s_printf.c ft_group_onetwo.c ft_group_united.c ft_making_move.c ft_bit_party.c
+SRC = format.c ft_s_printf.c ft_group_onetwo.c ft_group_united.c ft_making_move.c \
+	  ft_bit_party.c
 
 OBJ = $(SRC:.c=.o)
 
+LIBOBJ = libft/*.o
+
 INC = -I ft_printf.h
 
-CFLAGS = -c  
+CFLAGS = -c -Wall -Wextra -Werror
 
-LIBCR = @make -C libft/
+LIBCR = make -C libft/
 
 LIBINC = -I libft/includes/libft.h -L./libft -lft
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(LIBCR)
-	@gcc $(LIBINC) $(OBJ) -o $(NAME)
-	@echo "./ft_printf compiled"
+	$(LIBCR) all
+	ar rc $(NAME) $(OBJ) $(LIBOBJ)
+	ranlib $(NAME)
 
 %.o: %.c
-	@gcc $(INC) $(CFLAGS) -o $@ $<
+	gcc $(INC) $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f $(OBJ)
@@ -47,9 +50,6 @@ liball:
 
 libclean:
 	$(LIBCR) clean
-
-libfclean:
-	$(LIBCR) fclean
 
 libre:
 	$(LIBCR) re 

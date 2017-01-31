@@ -14,11 +14,10 @@
 
 //void        ft_puppies_killa(t_printf **pf)
 
-
-
-
 void		ft_s_printf_clr(t_printf **pf)
 {
+    if ((*pf)->tx != NULL && (*pf)->cl != 's')
+        free(((*pf)->sign == '-') ? (*pf)->tx - 1 : (*pf)->tx);
 	(*pf)->cl = 0;
 	(*pf)->lspc = 0;
 	(*pf)->presc = -1;
@@ -36,11 +35,9 @@ void		ft_s_printf_clr(t_printf **pf)
 	(*pf)->hex = 0;
 	(*pf)->base = 10;
     (*pf)->c = 0;
-    ((*pf)->tx != NULL) ? free((*pf)->tx) : 0;
     ((*pf)->wc != NULL) ? free((*pf)->wc) : 0;
     ((*pf)->ws != NULL) ? free((*pf)->ws) : 0;
 }
-
 
 t_printf	*ft_s_printf_new(void)
 {

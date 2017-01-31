@@ -20,8 +20,12 @@ static void         ft_group_other_sign(t_printf **pf) /* for all mistake conver
 
 static void         ft_string_sign(t_printf **pf)
 {
-    *((*pf)->tx + (*pf)->presc) = '\0';
-    (*pf)->ltx = (int)ft_strlen((*pf)->tx);
+    ssize_t     i;
+    
+    if ((*pf)->tx == NULL)
+        (*pf)->tx = "(null)";
+    i = ((*pf)->presc == -1) ? (ssize_t)ft_strlen((*pf)->tx) : (*pf)->presc;
+    (*pf)->ltx = (*((*pf)->tx) != '\0') ? (int)i : 0;
     (*pf)->hex = 42;
 }
 

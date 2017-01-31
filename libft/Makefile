@@ -38,19 +38,16 @@ CFLAGS = -c -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "libft.a created"
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 %.o: %.c
-	@gcc -I includes/libft.h $(CFLAGS) -o $@ $<
+	gcc -I includes/libft.h $(CFLAGS) -o $@ $<
 
 clean:
-	@rm -f $(OBJ)
-	@echo "*.o deleted"
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "libft.a erased"
+	rm -f $(NAME)
 
 re: fclean all

@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-static void	status(t_printf *s)
+
+/*static void	status(t_printf *s)
 {
 	printf("Format string:            %s\n", s->ft);
 	printf("Lenght of format string:  %i\n", s->nf);
@@ -23,8 +23,8 @@ static void	status(t_printf *s)
 	printf("Minimal field:            %i\n", s->min_field);
 	printf("Prescision:               %i\n", s->presc);
 	printf("Size specifier:           %i\n", s->sm);
-}
-*/
+}*/
+
 static void		ft_flags(char *sv, t_printf **pf)
 {
     char 	f;
@@ -52,7 +52,6 @@ static void		ft_flags(char *sv, t_printf **pf)
 	else
 	 	(*pf)->cl = *sv;
 }
-
 static void		ft_size_spec(char *sv, t_printf **pf)
 {
     sequence 	spec;
@@ -60,14 +59,19 @@ static void		ft_size_spec(char *sv, t_printf **pf)
     spec = beer;
     while (*(++sv))
     {
-        (*sv == 'h' && h > spec) ? spec = h : 0;
+        if (*sv == 'h')
+        {
+            if (*(sv + 1) == 'h')
+                spec = hh;
+            else
+                spec = ((*(sv - 1) == 'h') && *(sv + 1) != 'h') ? spec : h;
+        }
         (*sv == 'l' && l > spec) ? spec = l : 0;
         (*sv == 'j' && j > spec) ? spec = j : 0;
         (*sv == 'z' && z > spec) ? spec = z : 0;
-        (*sv == 'h' && *(sv + 1) == 'h' && hh > spec) ? spec = hh : 0;
         (*sv == 'l' && *(sv + 1) == 'l' && ll > spec) ? spec = ll : 0;
     }
-    ((*pf)->sm < spec) ? (*pf)->sm = spec : 0;
+    ((*pf)->sm < (char)spec) ? (*pf)->sm = (char)spec : 0;
     ((*pf)->cl == 'p') ? (*pf)->sm = z : 0;
     ((*pf)->cl == 'p') ? (*pf)->cf[0] = '#' : 0;
     ((*pf)->cl == 'o') ? (*pf)->base = 8 : 0;
@@ -99,7 +103,7 @@ static void		ft_minfld_presc(char *sv, t_printf **pf)
 
 void            ft_s_spec(t_printf **pf, char *sv)
 {
-    ft_s_printf_clr(pf);
+    ((*pf)->mnpr < INT_MAX) ? ft_s_printf_clr(pf) : 0;
     while (*(++sv))
     {
         ++(*pf)->lspc;
@@ -110,7 +114,7 @@ void            ft_s_spec(t_printf **pf, char *sv)
     ft_flags((*pf)->spec, pf);
     ft_size_spec((*pf)->spec, pf);
     ft_minfld_presc((*pf)->spec, pf);
-/*  status(*pf); */
+    //status(*pf);
 }
 
 int             ft_printf(char *sv, ...)
@@ -122,7 +126,7 @@ int             ft_printf(char *sv, ...)
 	   return (-1);	
 	va_start(pc, sv);
     ft_making_move(&pf, &pc, sv);
-    (pf->cl == 0) ? ft_putstr(sv) : 0;
+  //  (pf->cl == 0 && pf->) ? ft_putstr(sv) : 0;
 	va_end(pc);
 	return (pf->lnpr);
 }
