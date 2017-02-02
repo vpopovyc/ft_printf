@@ -37,13 +37,17 @@ static char         *ft_after_party(wchar_t c)
     data = (unsigned char*)ft_uct8(c, data, ft_wstrblen(c));
     return ((char*)data);
 }
-
-static void         ft_bit_party(t_printf **pf, wchar_t *s) /* wchar_t * s – string of wide chars */
+static void         ft_bit_party(t_printf **pf, wchar_t *s) 
 {
     int         i;
     int         tmp;
     
     i = 0;
+        if (s == NULL) /* STOPS HERE */
+    {
+        (*pf)->tx = "(null)";
+        return ;
+    }
     tmp = ((*pf)->presc == -1) ? (int)ft_wstrmem(s) : ((*pf)->presc);
     while (s[i])
     {

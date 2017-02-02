@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_ppdel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 14:34:55 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/02/02 16:44:43 by vpopovyc         ###   ########.fr       */
+/*   Created: 2017/02/02 16:12:56 by vpopovyc          #+#    #+#             */
+/*   Updated: 2017/02/02 17:07:00 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_strdel(char **as)
+void	ft_ppdel(char ***sv)
 {
-	if (as)
+	char		i;
+
+	i = 0;
+	if (*sv)
 	{
-		free(*as);
-		*as = NULL;
+		while (**sv)
+		{
+			ft_strdel(*sv);
+			++(*sv);
+			++i;
+		}
+		*sv -= i;
+		free(*sv);
+		*sv = NULL;
 	}
 }

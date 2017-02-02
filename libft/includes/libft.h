@@ -6,7 +6,7 @@
 /*   By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 16:48:30 by vpopovyc          #+#    #+#             */
-/*   Updated: 2017/01/29 21:59:51 by vpopovyc         ###   ########.fr       */
+/*   Updated: 2017/02/02 17:07:57 by vpopovyc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ char				ft_wstrblen(wchar_t c);
 char 			   *ft_uct8(wchar_t c, unsigned char *data, char n);
 void				ft_pspp(char **s);
 size_t				ft_wstrmem(wchar_t *s);
+void				ft_ppdel(char ***sv);
 #endif

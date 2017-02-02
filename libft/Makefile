@@ -6,7 +6,7 @@
 #    By: vpopovyc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 15:22:42 by vpopovyc          #+#    #+#              #
-#    Updated: 2017/01/29 21:59:20 by vpopovyc         ###   ########.fr        #
+#    Updated: 2017/02/02 17:07:29 by vpopovyc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprintf_spec.c ft_isalpha.c \
 		ft_isprintf_up_spec.c ft_sstoab.c ft_stoab.c ft_psn.c ft_pssn.c \
 		ft_iscl_group1.c ft_iscl_group2.c ft_loweralize.c ft_capitalize.c \
 		ft_wstrlen.c ft_iscl_group3.c ft_wstrblen.c ft_uct8.c ft_pspp.c \
-		ft_wstrmem.c
+		ft_wstrmem.c ft_ppdel.c
 
 OBJ = $(SRC:.c=.o) 
 

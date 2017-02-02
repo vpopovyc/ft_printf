@@ -35,8 +35,8 @@ void		ft_s_printf_clr(t_printf **pf)
 	(*pf)->hex = 0;
 	(*pf)->base = 10;
     (*pf)->c = 0;
-    ((*pf)->wc != NULL) ? free((*pf)->wc) : 0;
-    ((*pf)->ws != NULL) ? free((*pf)->ws) : 0;
+    (*pf)->wc = NULL;
+    ((*pf)->ws != NULL) ? ft_ppdel(&(*pf)->ws) : 0;
 }
 
 t_printf	*ft_s_printf_new(void)
