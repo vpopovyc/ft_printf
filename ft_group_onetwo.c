@@ -44,7 +44,7 @@ static void			ft_group1_sign(t_printf **pf)
             (*pf)->ltx = 0;
             (*pf)->cf[4] = '*';
         }
-    }
+    };
 }
 
 static  void    ft_shit(t_printf **pf)

@@ -144,11 +144,11 @@
 				976050561E3A1209007C46C5 /* main.c */,
 				9760504C1E3A11FA007C46C5 /* ft_group_united.c */,
 				9760504D1E3A11FA007C46C5 /* ft_group_onetwo.c */,
-				9760504B1E3A11FA007C46C5 /* format.c */,
+				97FB5A3B1E3CF03700BFAD52 /* ft_bit_party.c */,
 				9760504E1E3A11FA007C46C5 /* ft_making_move.c */,
+				9760504B1E3A11FA007C46C5 /* format.c */,
 				9760504F1E3A11FA007C46C5 /* ft_printf.h */,
 				976050501E3A11FA007C46C5 /* ft_s_printf.c */,
-				97FB5A3B1E3CF03700BFAD52 /* ft_bit_party.c */,
 				976050411E3A1171007C46C5 /* Products */,
 				976050EE1E3A79EB007C46C5 /* Frameworks */,
 			);

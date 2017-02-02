@@ -49,13 +49,14 @@ void                    ft_group_one_output(t_printf **pf)
     }
     else
     {
+        
         if ((*pf)->sign != '\0' && (*pf)->field == '0')
             ft_psn(&(*pf)->sign, 1);
         ft_pssn((*pf)->field, (*pf)->fld);
         if ((*pf)->sign != '\0' && (*pf)->field != '0')
             ft_psn(&(*pf)->sign, 1);
         ft_pssn((*pf)->prefix, (*pf)->prx);
-        ft_psn((*pf)->tx, (*pf)->ltx);
+        ft_psn((*pf)->tx, (*pf)->sign == '-' ? (*pf)->ltx - 1 : (*pf)->ltx);
     }
     (*pf)->lnpr += (*pf)->nf + (*pf)->ltx;
 }
