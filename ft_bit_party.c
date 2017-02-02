@@ -21,11 +21,15 @@ static void         ft_group_other_sign(t_printf **pf) /* for all mistake conver
 static void         ft_string_sign(t_printf **pf)
 {
     ssize_t     i;
-    
+    ssize_t     b;
+
     if ((*pf)->tx == NULL)
         (*pf)->tx = "(null)";
-    i = ((*pf)->presc == -1) ? (ssize_t)ft_strlen((*pf)->tx) : (*pf)->presc;
+    b = (ssize_t)ft_strlen((*pf)->tx);
+    i = ((*pf)->presc == -1) ? b : (*pf)->presc;
     (*pf)->ltx = (*((*pf)->tx) != '\0') ? (int)i : 0;
+    (*((*pf)->spec + (*pf)->lspc - 1) == '.') ? (*pf)->ltx = 0 : 0;
+    ((*pf)->presc > b) ? (*pf)->ltx = (int)b : 0;
     (*pf)->hex = 42;
 }
 
@@ -43,12 +47,16 @@ static void         ft_bit_party(t_printf **pf, wchar_t *s)
     int         tmp;
     
     i = 0;
-        if (s == NULL) /* STOPS HERE */
+    if (s == NULL) /* STOPS HERE */
     {
         (*pf)->tx = "(null)";
+        (*pf)->ltx = (int)ft_strlen((*pf)->tx);
+        (*pf)->hex = 42;
+        (*pf)->sm = 0;
         return ;
     }
     tmp = ((*pf)->presc == -1) ? (int)ft_wstrmem(s) : ((*pf)->presc);
+    tmp = (*((*pf)->spec + (*pf)->lspc - 1) == '.') ? 0 : tmp;
     while (s[i])
     {
         tmp -= ft_wstrblen(s[i]);
@@ -63,6 +71,7 @@ static void         ft_bit_party(t_printf **pf, wchar_t *s)
         *((*pf)->ws + i) = ft_after_party(s[i]);
     (*pf)->hex = 42;
     ((*pf)->presc == -1) ? (*pf)->ltx = (int)ft_wstrmem(s) : 0;
+    (*((*pf)->spec + (*pf)->lspc - 1) == '.') ? (*pf)->ltx = 0 : 0;
 }
 
 

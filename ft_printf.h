@@ -61,7 +61,7 @@ void			ft_group2(t_printf **pf, va_list *pc);
 void            ft_group3(t_printf **pf, va_list *pc);
 /* group_united.c */
 void            ft_group_one_output(t_printf **pf);
-void            ft_group_two_output(t_printf **pf);
+void             ft_group_two_output(t_printf **pf);
 void			ft_group_prefix(t_printf **pf);
 void			ft_group_field(t_printf **pf);
 #endif

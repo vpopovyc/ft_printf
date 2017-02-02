@@ -16,7 +16,7 @@
 
 void		ft_s_printf_clr(t_printf **pf)
 {
-    if ((*pf)->tx != NULL && (*pf)->cl != 's')
+    if ((*pf)->tx != NULL && (*pf)->cl == 's' && (*pf)->sm == 3)
         free(((*pf)->sign == '-') ? (*pf)->tx - 1 : (*pf)->tx);
 	(*pf)->cl = 0;
 	(*pf)->lspc = 0;
