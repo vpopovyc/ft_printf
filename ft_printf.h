@@ -64,6 +64,8 @@ void            ft_group_one_output(t_printf **pf);
 void             ft_group_two_output(t_printf **pf);
 void			ft_group_prefix(t_printf **pf);
 void			ft_group_field(t_printf **pf);
+/* pp */
+void            ft_puppies_killa(t_printf **pf);
 #endif
 
 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void         ft_group_other_sign(t_printf **pf) /* for all mistake conversions */
+static void         ft_group_other_sign(t_printf **pf)
 {
     (*pf)->ltx = 1;
     (*pf)->hex = 42;
@@ -41,20 +41,28 @@ static char         *ft_after_party(wchar_t c)
     data = (unsigned char*)ft_uct8(c, data, ft_wstrblen(c));
     return ((char*)data);
 }
+
+static char         ft_null_party(t_printf **pf, wchar_t *s)
+{
+    if (s == NULL)
+    {
+        (*pf)->tx = "(null)";
+        (*pf)->ltx = (int)ft_strlen((*pf)->tx);
+        (*pf)->hex = 42;
+        (*pf)->sm = 0;
+        return (1);
+    }
+    return (0);
+}
+
 static void         ft_bit_party(t_printf **pf, wchar_t *s) 
 {
     int         i;
     int         tmp;
     
     i = 0;
-    if (s == NULL) /* STOPS HERE */
-    {
-        (*pf)->tx = "(null)";
-        (*pf)->ltx = (int)ft_strlen((*pf)->tx);
-        (*pf)->hex = 42;
-        (*pf)->sm = 0;
+    if (ft_null_party(pf, s))
         return ;
-    }
     tmp = ((*pf)->presc == -1) ? (int)ft_wstrmem(s) : ((*pf)->presc);
     tmp = (*((*pf)->spec + (*pf)->lspc - 1) == '.') ? 0 : tmp;
     while (s[i])

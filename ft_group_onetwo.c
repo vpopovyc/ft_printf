@@ -12,15 +12,25 @@
 
 #include "ft_printf.h"
 
-ssize_t                  ft_check(t_printf **pf)
+static  void        ft_shit(t_printf **pf)
 {
-    if ((*pf)->lnpr + (*pf)->nf + (*pf)->ltx > (*pf)->mnpr)
-        return ((*pf)->lnpr = -1);
-    return (1);
+    char    prev_c;
+    char    base;
+    char    tc;
+    
+    tc = *((*pf)->tx);
+    base = (*pf)->base;
+    prev_c = *((*pf)->spec + (*pf)->lspc - 1);
+    if ((prev_c == '.' || prev_c == '0') && (*pf)->presc <= 0)
+    {
+        *((*pf)->tx) == '0' ? (*pf)->ltx = 0 : 0;
+        tc == '0' ? (*pf)->cf[4] = '*' : 0;
+        base == 8 && (*pf)->cf[0] == '#' && tc == '0' ? ++(*pf)->lnpr : 0;
+        base == 8 && (*pf)->cf[0] == '#' ? (*pf)->sign = '0' : 0;
+    }
+    if ((*pf)->min_field < 0)
+        (*pf)->cf[4] == '0' && tc == '0' ? (*pf)->presc = (*pf)->min_field : 0;
 }
-
-
-
 
 static void			ft_group1_sign(t_printf **pf)
 {
@@ -32,40 +42,7 @@ static void			ft_group1_sign(t_printf **pf)
     ((*pf)->tx[0] == '-') ? (*pf)->tx += 1 : 0;
     ((*pf)->sign == ' ' || (*pf)->sign == '+') ? --(*pf)->min_field : 0;
     ((*pf)->sign == ' ' || (*pf)->sign == '+') ? ++(*pf)->lnpr : 0;
-    if (*((*pf)->tx) == '0')
-    {
-        if (*((*pf)->spec + (*pf)->lspc - 1) == '.' && (*pf)->presc == -1)
-        {
-            (*pf)->ltx = 0;
-            (*pf)->cf[4] = '*';
-        }
-        else if (*((*pf)->spec + (*pf)->lspc - 1) == '0' && (*pf)->presc == -1)
-        {
-            (*pf)->ltx = 0;
-            (*pf)->cf[4] = '*';
-        }
-    };
-}
-
-static  void    ft_shit(t_printf **pf)
-{
-    if ((*((*pf)->tx) == '0' && (*pf)->lspc >= 2))
-    {
-        if (*((*pf)->spec + (*pf)->lspc - 1) == '.' && (*pf)->presc <= 0)
-        {
-            (*pf)->ltx = 0;
-            (*pf)->cf[4] = '*';
-        }
-        else if (*((*pf)->spec + (*pf)->lspc - 1) == '0')
-        {
-            (*pf)->ltx = 0;
-            (*pf)->cf[4] = '*';
-        }
-        else if ((*pf)->cf[0] == '#')
-            (*pf)->ltx = 0;
-        else if (*((*pf)->spec + (*pf)->lspc - 1) == '+')
-            (*pf)->ltx = 1;
-    }
+    ft_shit(pf);
 }
 
 static	void	ft_group2_sign(t_printf **pf)
@@ -75,8 +52,8 @@ static	void	ft_group2_sign(t_printf **pf)
     {
         ((*pf)->base == 8 && *((*pf)->tx) != '0') ? --(*pf)->presc : 0;
         ((*pf)->base == 8 && *((*pf)->tx) != '0') ? --(*pf)->min_field : 0;
-        ((*pf)->base == 8 ) ? ++(*pf)->lnpr : 0;
-        ((*pf)->base == 8 ) ? (*pf)->sign = '0' : 0;
+        ((*pf)->base == 8 && *((*pf)->tx) != '0') ? ++(*pf)->lnpr : 0;
+        ((*pf)->base == 8 && *((*pf)->tx) != '0') ? (*pf)->sign = '0' : 0;
         if ((*pf)->base == 16 && (*((*pf)->tx) != '0' || (*pf)->cl == 'p'))
         {   
             (*pf)->min_field -= 2;
@@ -86,14 +63,7 @@ static	void	ft_group2_sign(t_printf **pf)
         }
     }
     ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? ft_loweralize((*pf)->tx) : 0;
-    if ((*((*pf)->tx) == '0' && (*pf)->lspc >= 2) && (*pf)->sm == 0)
-        if (*((*pf)->spec + (*pf)->lspc - 1) == '.' || (*pf)->presc <= 0)
-        {
-            (*pf)->ltx = 0;
-            (*((*pf)->spec + (*pf)->lspc - 1) == '#') ? (*pf)->ltx = 1 : 0;
-            (*pf)->cf[4] = '*';
-        }
-    ((*pf)->cl == 'o') ? ft_shit(pf) : 0;
+    ft_shit(pf);
 }
 
 void				ft_group1(t_printf **pf, va_list *pc)
@@ -137,7 +107,6 @@ void			ft_group2(t_printf **pf, va_list *pc)
 		(*pf)->tx = ft_stoab(va_arg(*pc, uintmax_t), bs);
 	else if ((*pf)->sm == 6)
 		(*pf)->tx = ft_stoab(va_arg(*pc, size_t), bs);
-    ((*pf)->cl == 'p') ? (*pf)->sm = 0 : 0;
 	ft_group2_sign(pf);
 	ft_group_field(pf);
     ft_group_two_output(pf);

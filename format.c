@@ -129,7 +129,7 @@ int             ft_printf(char *sv, ...)
     if (ft_strlen(sv) == 1 && *sv == '%')
         return (0);
     ft_making_move(&pf, &pc, sv);
-  //  (pf->cl == 0 && pf->) ? ft_putstr(sv) : 0;
 	va_end(pc);
+    ft_puppies_killa(&pf);
 	return (pf->lnpr);
 }

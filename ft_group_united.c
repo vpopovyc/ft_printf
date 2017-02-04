@@ -37,6 +37,7 @@ static void             ft_bit_output(t_printf **pf)
     }
     (*pf)->lnpr += (*pf)->nf + (*pf)->ltx;
 }
+
 void                    ft_group_one_output(t_printf **pf)
 {
     ft_psn((*pf)->ft, (*pf)->nf);
@@ -101,7 +102,7 @@ void                    ft_group_prefix(t_printf **pf)
     (*pf)->prefix = '0';
 }
 
-void                    ft_group_field(t_printf **pf) /* Ended here */
+void                    ft_group_field(t_printf **pf)
 {
     ft_group_prefix(pf);
     (*pf)->fld = (*pf)->ltx + (*pf)->prx - (*pf)->min_field;
@@ -118,7 +119,7 @@ void                    ft_group_field(t_printf **pf) /* Ended here */
     (*pf)->lnpr += (*pf)->fld;
     if (ft_check(pf) == -1)
         return ;
-    if ((*pf)->cf[4] != '0' || (*pf)->presc > (*pf)->ltx || (*pf)->cf[1] == '-')
+    if ((*pf)->cf[4] != '0' || (*pf)->presc >= (*pf)->ltx || (*pf)->cf[1] == '-')
         (*pf)->field = ' ';
     else
         (*pf)->field = '0';

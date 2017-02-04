@@ -16,12 +16,13 @@ void	ft_ppdel(char ***sv)
 {
 	char		i;
 
-	i = 0;
-	if (*sv)
+    i = 0;
+	if (*sv != NULL && **sv != NULL)
 	{
-		while (**sv)
+        while (**sv)
 		{
-			ft_strdel(*sv);
+			free(**sv);
+            **sv = NULL;
 			++(*sv);
 			++i;
 		}

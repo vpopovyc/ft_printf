@@ -12,11 +12,30 @@
 
 #include "ft_printf.h"
 
-//void        ft_puppies_killa(t_printf **pf)
+void        ft_puppies_killa(t_printf **pf)
+{
+    if ((*pf)->tx != NULL)
+    {
+        if (ft_iscl_group3((*pf)->cl) != 1)
+            free(((*pf)->sign == '-') ? (*pf)->tx - 1 : (*pf)->tx);
+    }
+    ((*pf)->ws != NULL && *((*pf)->ws) != '\0') ? ft_ppdel(&(*pf)->ws) : 0;
+    ((*pf)->ft != NULL) ? ft_strdel(&(*pf)->ft) : 0;
+    (*pf)->spec != NULL || *((*pf)->spec) != '0' ? ft_strdel(&(*pf)->spec) : 0;
+    ((*pf)->cf != NULL) ? ft_strdel(&(*pf)->cf) : 0;
+    free(*pf);
+}
+
+ssize_t     ft_check(t_printf **pf)
+{
+    if ((*pf)->lnpr + (*pf)->nf + (*pf)->ltx > (*pf)->mnpr)
+        return ((*pf)->lnpr = -1);
+    return (1);
+}
 
 void		ft_s_printf_clr(t_printf **pf)
 {
-    if ((*pf)->tx != NULL && (*pf)->cl == 's' && (*pf)->sm == 3)
+    if ((*pf)->tx != NULL && ft_iscl_group3((*pf)->cl) != 1)
         free(((*pf)->sign == '-') ? (*pf)->tx - 1 : (*pf)->tx);
 	(*pf)->cl = 0;
 	(*pf)->lspc = 0;
