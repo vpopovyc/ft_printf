@@ -29,7 +29,8 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprintf_spec.c ft_isalpha.c \
 		ft_isprintf_up_spec.c ft_sstoab.c ft_stoab.c ft_psn.c ft_pssn.c \
 		ft_iscl_group1.c ft_iscl_group2.c ft_loweralize.c ft_capitalize.c \
 		ft_wstrlen.c ft_iscl_group3.c ft_wstrblen.c ft_uct8.c ft_pspp.c \
-		ft_wstrmem.c ft_ppdel.c
+		ft_wstrmem.c ft_ppdel.c ft_getd_rs.c ft_getd_ls.c ft_iscl_group4.c \
+		ft_power.c
 
 OBJ = $(SRC:.c=.o) 
 

@@ -41,6 +41,7 @@ typedef struct	s_printf
     int         c;                        // For all conversions exept s, ls
     char        **ws;                     // For ls
     wchar_t     *wc;
+    /* floats */
 }				t_printf;
 typedef enum	size_spec
 {
@@ -69,6 +70,8 @@ void            ft_puppies_killa(t_printf **pf);
 /* bit party */
 void            ft_weof_camp(t_printf **pf, va_list *pc);
 void            ft_bit_party(t_printf **pf, wchar_t *s);
+/* group4 */
+void            ft_group4(t_printf **pf, va_list *pc);
 #endif
 
 

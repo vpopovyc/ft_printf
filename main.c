@@ -15,7 +15,7 @@
 int		main(void)
 {
     setlocale(LC_ALL, "");
-    char c;
+//    char c;
   //  wint_t  c = WEOF;
   //  int	    id = c;
   //  printf("%i\n", id);
@@ -26,8 +26,8 @@ int		main(void)
   /*  printf("\nBytes returned: %i\n", ft_printf("{% C}", L'a'));
     printf("\nBytes returned: %i\n",    printf("{% C}", L'a'));
 */
-    printf("\nBytes returned: %i\n", ft_printf("%c%*d", 'c', INT_MAX - 1, 10));
-    printf("\nBytes returned: %i\n",    printf("%c%*d", 'c', INT_MAX - 1, 10));
+    printf("\nBytes returned: %i\n", ft_printf("{%f}{%F}", 1.42, 1.42));
+    printf("\nBytes returned: %i\n",    printf("{%f}{%F}", 1.42, 1.42));
 
 /*    printf("\nBytes returned: %i\n", ft_printf("%C", L'莨'));
     printf("\nBytes returned: %i\n",    printf("%C", L'莨'));

@@ -15,6 +15,7 @@
 int		ft_iscl_group3(char c)
 {
 	if ((ft_isascii(c) && !ft_iscl_group1(c) && !ft_iscl_group2(c)))
-		return (1);
+        if (!ft_iscl_group4(c))
+            return (1);
 	return (0);
 }

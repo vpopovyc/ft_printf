@@ -21,6 +21,7 @@
 # include <locale.h>
 # include <wchar.h>
 # include <wctype.h>
+# include <math.h>
 
 typedef struct		s_list
 {
@@ -98,7 +99,9 @@ char				*ft_sstoab(ssize_t value, ssize_t base);
 char                *ft_stoab(size_t value, size_t base);
 int                 ft_iscl_group1(char c);
 int                 ft_iscl_group2(char c);
+int		    ft_iscl_group4(char c);
 int					ft_iscl_group3(char c);
+int		    ft_iscl_group4(char c);
 void				ft_capitalize(char *s);
 void				ft_loweralize(char *s);
 void				ft_psn(char *s, unsigned int n);
@@ -109,4 +112,7 @@ char 			   *ft_uct8(wchar_t c, unsigned char *data, char n);
 void				ft_pspp(char **s);
 size_t				ft_wstrmem(wchar_t *s);
 void				ft_ppdel(char ***sv);
+size_t				ft_getd_rs(double n);
+size_t				ft_getd_ls(double n, unsigned int len);
+size_t				ft_power(ssize_t x, size_t n);
 #endif

@@ -16,5 +16,7 @@ int		ft_isprintf_up_spec(int c)
 {
 	if (c == 'C' || c == 'D' || c == 'U' || c == 'O' || c == 'S')
 		return (1);
+	else if (c == 'F')
+		return (1);
 	return (0);
 }
