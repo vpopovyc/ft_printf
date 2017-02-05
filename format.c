@@ -79,29 +79,37 @@ static void		ft_size_spec(char *sv, t_printf **pf)
     ((*pf)->cl == 'x' || (*pf)->cl == 'p') ? (*pf)->base = 16 : 0;
 }
 
-static void		ft_minfld_presc(char *sv, t_printf **pf)
+
+
+
+static void		ft_minfld_presc(char *sv, t_printf **pf, va_list *pc, char f)
 {
-    char 	f;
-    
-    f = 1;
     while (*(++sv))
     {
-        if ((*sv >= '1' && *sv <= '9') && f)
+        if (((*sv >= '1' && *sv <= '9') || f == 3 || f == 4) && f)
         {
-            if (f == 1)
-                (*pf)->min_field = (int)ft_atosize_t(sv);
-            else if (f == 2)
-                (*pf)->presc = (int)ft_atosize_t(sv);
+            f == 1 ? (*pf)->min_field = (int)ft_atosize_t(sv) : 0;
+            f == 2 ? (*pf)->presc = (int)ft_atosize_t(sv) : 0;
             f = 0;
         }
+        else if (*sv == '.' && *(sv + 1) == '*')
+            (*pf)->presc = va_arg(*pc, int);
         else if (*sv == '.')
+        {
             f = 2;
+            (*pf)->presc = 0;
+        }
+        else if (*sv == '*' && *(sv - 1) != '.')
+            (*pf)->min_field = va_arg(*pc, int);
         else if (!(*sv >= '1' && *sv <= '9'))
             f = 1;
     }
+    (*pf)->presc < -1 ? (*pf)->presc = -1 : 0;
+    (*pf)->min_field < 0 ? (*pf)->cf[1] = '-' : 0;
+    (*pf)->min_field < 0 ? (*pf)->min_field = -(*pf)->min_field : 0;
 }
 
-void            ft_s_spec(t_printf **pf, char *sv)
+void            ft_s_spec(t_printf **pf, char *sv, va_list *pc)
 {
     ((*pf)->mnpr <= INT_MAX) ? ft_s_printf_clr(pf) : 0;
     (*pf)->lspc = 0;
@@ -114,7 +122,7 @@ void            ft_s_spec(t_printf **pf, char *sv)
     (*pf)->spec = ft_strnfjoin((*pf)->spec, sv - (*pf)->lspc, (*pf)->lspc + 1);
     ft_flags((*pf)->spec, pf);
     ft_size_spec((*pf)->spec, pf);
-    ft_minfld_presc((*pf)->spec, pf);
+    ft_minfld_presc((*pf)->spec, pf, pc, 1);
     //status(*pf);
 }
 

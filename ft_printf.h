@@ -47,7 +47,7 @@ typedef enum	size_spec
 	beer, hh, h, l, ll, j, z
 }               sequence;
 /* format.c */
-void            ft_s_spec(t_printf **pf, char *sv);
+void            ft_s_spec(t_printf **pf, char *sv, va_list *pc);
 int				ft_printf(char *sv, ...);
 /* ft_s_printf.c */
 void			ft_s_printf_clr(t_printf **pf);
@@ -66,6 +66,9 @@ void			ft_group_prefix(t_printf **pf);
 void			ft_group_field(t_printf **pf);
 /* pp */
 void            ft_puppies_killa(t_printf **pf);
+/* bit party */
+void            ft_weof_camp(t_printf **pf, va_list *pc);
+void            ft_bit_party(t_printf **pf, wchar_t *s);
 #endif
 
 

@@ -35,6 +35,7 @@ ssize_t     ft_check(t_printf **pf)
 
 void		ft_s_printf_clr(t_printf **pf)
 {
+    ((*pf)->ws != NULL) ? ft_ppdel(&(*pf)->ws) : 0;
     if ((*pf)->tx != NULL && ft_iscl_group3((*pf)->cl) != 1)
         free(((*pf)->sign == '-') ? (*pf)->tx - 1 : (*pf)->tx);
 	(*pf)->cl = 0;
@@ -55,7 +56,6 @@ void		ft_s_printf_clr(t_printf **pf)
 	(*pf)->base = 10;
     (*pf)->c = 0;
     (*pf)->wc = NULL;
-    ((*pf)->ws != NULL) ? ft_ppdel(&(*pf)->ws) : 0;
 }
 
 t_printf	*ft_s_printf_new(void)

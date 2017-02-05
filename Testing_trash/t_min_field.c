@@ -19,21 +19,26 @@ int		main(void)
 	int		 p = 0;
 	char     f = 1;
 
-	while (*(++s))
-	{
-		if ((*s >= '1' && *s <= '9') && f)
-		{
-			if (f == 1)
-				d = ft_atosize_t(s);
-			else if (f == 2)
-				p = ft_atosize_t(s);
-			f = 0;
-		}
-		else if (*s == '.')
-			f = 2;
-		else if (!(*s >= '1' && *s <= '9'))
-			f = 1;
-	}
+    
+    while (*(++sv))
+    {
+        if ((*sv >= '1' && *sv <= '9') && f)
+        {
+            f == 1 ? (*pf)->min_field = (int)ft_atosize_t(sv) : 0;
+            f == 2 ? (*pf)->presc = (int)ft_atosize_t(sv) : 0;
+            f == 3 ? (*pf)->min_field = va_arg(*pc, int) : 0;
+            f == 4 ? (*pf)->presc = va_arg(*pc, int) : 0;
+            f = 0;
+        }
+        else if (*sv == '.' && *(sv + 1) == '*')
+            f = 4;
+        else if (*sv == '.')
+            f = 2;
+        else if (*sv == '*' && *(sv - 1) != '.')
+            f = 3;
+        else if (!(*sv >= '1' && *sv <= '9'))
+            f = 1;
+    }
 	printf("d: %i\np: %i\n", d, p);
 	return (0);
 }
