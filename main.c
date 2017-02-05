@@ -14,27 +14,31 @@
 
 int		main(void)
 {
-    char c;
     setlocale(LC_ALL, "");
+    char c;
+  //  wint_t  c = WEOF;
+  //  int	    id = c;
+  //  printf("%i\n", id);
+//    write(1, &id, 1);
     // wchar_t *s = L"Антон пидор, привет Игорь";
     //"@moulitest: %.d %.0d", 0, 0
     
-    printf("\nBytes returned: %i\n", ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플'));
-    printf("\nBytes returned: %i\n",    printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플'));
- 
-    printf("\nBytes returned: %i\n", ft_printf("%S%D%c", L"暖炉", LONG_MAX, 'c'));
-    printf("\nBytes returned: %i\n",    printf("%S%D%c", L"暖炉", LONG_MAX, 'c'));
+  /*  printf("\nBytes returned: %i\n", ft_printf("{% C}", L'a'));
+    printf("\nBytes returned: %i\n",    printf("{% C}", L'a'));
+*/
+    printf("\nBytes returned: %i\n", ft_printf("%c%*d", 'c', INT_MAX - 1, 10));
+    printf("\nBytes returned: %i\n",    printf("%c%*d", 'c', INT_MAX - 1, 10));
 
-/*    printf("\nBytes returned: %i\n", ft_printf("{%010i}", 42));
-    printf("\nBytes returned: %i\n",    printf("{%010i}", 42));
-    
-    
-    printf("\nBytes returned: %i\n", ft_printf("{%010u}", 42));
-    printf("\nBytes returned: %i\n",    printf("{%010u}", 42));
-    
-    printf("\nBytes returned: %i\n", ft_printf("@moulitest: %5.o %5.0o", 0, 0));
-    printf("\nBytes returned: %i\n",    printf("@moulitest: %5.o %5.0o", 0, 0));
+/*    printf("\nBytes returned: %i\n", ft_printf("%C", L'莨'));
+    printf("\nBytes returned: %i\n",    printf("%C", L'莨'));
     
 
-	*/return (0);
+    printf("\nBytes returned: %i\n", ft_printf("%C", L'δ'));
+    printf("\nBytes returned: %i\n",    printf("%C", L'δ'));
+    
+    printf("\nBytes returned: %i\n", ft_printf("%C", L'요'));
+    printf("\nBytes returned: %i\n",    printf("%C", L'요'));
+    
+*/
+	return (0);
 }

@@ -28,10 +28,12 @@ static void             ft_bit_output(t_printf **pf)
     else
     {
         ft_pssn((*pf)->field, (*pf)->fld);
-        if ((*pf)->cl == 's' && (*pf)->sm == 3)
+        if (((*pf)->cl == 's') && (*pf)->sm == 3)
             ft_pspp((*pf)->ws);
         else if ((*pf)->cl == 's')
             ft_psn((*pf)->tx, (*pf)->ltx);
+        else if ((*pf)->cl == 'c' && (*pf)->sm == 3)
+            ft_putstr(*(*pf)->ws);
         else
             write(1, &(*pf)->c, 1);
     }

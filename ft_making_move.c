@@ -40,7 +40,7 @@ void               ft_making_move(t_printf **pf, va_list *pc, char *sv)
     {
         if (*sv == '%')
         {
-            ft_s_spec(pf, sv);
+            ft_s_spec(pf, sv, pc);
             (*pf)->ft = ft_strnfjoin((*pf)->ft, sv - (*pf)->nf, (*pf)->nf);
             if (!ft_get_arg(pf, pc))
                 return ;

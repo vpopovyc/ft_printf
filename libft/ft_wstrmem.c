@@ -17,7 +17,7 @@ size_t		ft_wstrmem(wchar_t *s)
 	size_t len;
 
 	len = 0;
-	while (*s != L'\0')
+	while (*s != L'\0' && s)
 	{
 		len += ft_wstrblen(*s);
 		++s;

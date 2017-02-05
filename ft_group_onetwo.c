@@ -84,9 +84,10 @@ void				ft_group1(t_printf **pf, va_list *pc)
         (*pf)->tx = ft_sstoab(va_arg(*pc, ssize_t), 10);
     ft_group1_sign(pf);
     ft_group_field(pf);
+    if ((*pf)->lnpr == -1)
+        return ;
     ft_group_one_output(pf);
 }
-
 
 void			ft_group2(t_printf **pf, va_list *pc)
 {
@@ -109,5 +110,7 @@ void			ft_group2(t_printf **pf, va_list *pc)
 		(*pf)->tx = ft_stoab(va_arg(*pc, size_t), bs);
 	ft_group2_sign(pf);
 	ft_group_field(pf);
+    if ((*pf)->lnpr == -1)
+        return ;
     ft_group_two_output(pf);
 }

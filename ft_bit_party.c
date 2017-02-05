@@ -14,6 +14,7 @@
 
 static void         ft_group_other_sign(t_printf **pf)
 {
+    (*pf)->sm == 3 ? (*pf)->sm = 0 : 0;
     (*pf)->ltx = 1;
     (*pf)->hex = 42;
 }
@@ -55,7 +56,7 @@ static char         ft_null_party(t_printf **pf, wchar_t *s)
     return (0);
 }
 
-static void         ft_bit_party(t_printf **pf, wchar_t *s) 
+void                ft_bit_party(t_printf **pf, wchar_t *s)
 {
     int         i;
     int         tmp;
@@ -82,6 +83,33 @@ static void         ft_bit_party(t_printf **pf, wchar_t *s)
     (*((*pf)->spec + (*pf)->lspc - 1) == '.') ? (*pf)->ltx = 0 : 0;
 }
 
+void                ft_weof_camp(t_printf **pf, va_list *pc)
+{
+    wint_t  i;
+    wchar_t t;
+    int     len;
+    char    *tmp;
+    
+    i = va_arg(*pc, wint_t);
+    if (i == -1)
+    {
+        (*pf)->lnpr = -1;
+        return ;
+    }
+    if (i == '\0')
+    {
+        ft_group_other_sign(pf);
+        (*pf)->presc = -1;
+        return (ft_group_field(pf));
+    }
+    t = (wchar_t)i;
+    len = ft_wstrblen(t);
+    tmp = ft_after_party(t);
+    (*pf)->lnpr += len + (*pf)->nf;
+    ft_psn((*pf)->ft, (*pf)->nf);
+    ft_putstr(tmp);
+    free(tmp);
+}
 
 void                ft_group3(t_printf **pf, va_list *pc)
 {
@@ -95,6 +123,8 @@ void                ft_group3(t_printf **pf, va_list *pc)
         (*pf)->tx = va_arg(*pc, char *);
         ft_string_sign(pf);
     }
+    else if ((*pf)->cl == 'c' && (*pf)->sm == 3)
+        return (ft_weof_camp(pf, pc));
     else
     {
         if ((*pf)->cl == 'c')
@@ -103,6 +133,8 @@ void                ft_group3(t_printf **pf, va_list *pc)
             (*pf)->c = (*pf)->cl;
         ft_group_other_sign(pf);
     }
+    if ((*pf)->lnpr == -1)
+        return ;
     (*pf)->presc = -1;
     ft_group_field(pf);
 }
